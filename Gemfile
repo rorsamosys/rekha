@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -48,6 +48,7 @@ gem 'spree', github: 'spree/spree', branch: '2-1-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-1-stable'
 gem 'spree_fancy', :github => 'spree/spree_fancy', :branch => '2-1-stable'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '2-1-stable'
-#gem 'spree_paypal_express', :git => 'git://github.com/spree/spree_paypal_express.git'
+#gem 'spree_essential_content', :git => 'https://github.com/FineLineAutomation/spree_essential_content.git', branch: 'master'
+#gem 'spree_multilingual_static_content', :github => "azinazadi/spree-multilingual-static-content"
 
-
+gem "highcharts-rails", "~> 3.0.0"

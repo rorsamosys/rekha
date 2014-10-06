@@ -7,6 +7,6 @@ development:
   adapter: postgresql
   database: cdn_shop_dev
   username: postgres
-  password: 123456
+  password: cdn123
   pool: 5
   timeout: 5000

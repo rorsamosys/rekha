@@ -1,0 +1,34 @@
+<h3>Contact Us</h3>
+
+<p>Are you looking for IT Outsourcing Partners?
+we are here
+CDN Solutions Group is Central India's leading IT Outsourcing Company with services ranging from customer software development, mobile application development to high-end multimedia development services. Contact us if you want to reinvent your business and work for productive results and to explore all new possibilities in Software Development with Open Source Technologies, Mobile Apps Dev., High end Multimedia </p>
+
+
+
+
+<%= form_tag contact_info_path, :method => :get do %>
+		<div class="form-group">
+        <label for="inputEmail" class="control-label col-xs-2">Name</label>
+        <div class="col-xs-10">
+        	<%= text_field_tag "name", nil, :class=>"form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail" class="control-label col-xs-2">Email</label>
+        <div class="col-xs-10">
+        	<%= email_field_tag "email",nil, :class=>"form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="control-label col-xs-2">Message</label>
+        <div class="col-xs-10">
+        	<%= text_area_tag "message", nil, :class=>"form-control"%><br><br>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+            <%= submit_tag "Send message", :class=> "btn btn-primary" %>
+        </div>
+    </div>
+<% end %>

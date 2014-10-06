@@ -11,3 +11,5 @@
 
 //= require_tree .
 //= require admin/spree_fancy
+//= require highcharts
+//= require highcharts/highcharts-more

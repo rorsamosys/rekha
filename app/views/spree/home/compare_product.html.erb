@@ -1,0 +1,62 @@
+<div id="wrapper" data-hook="" class="container">
+  <div class="bx-wrapper slider-pager"></div>
+  <div id="content" class="columns sixteen" data-hook="">
+    <div id="welcome-message">
+      <div class="container">
+        <%= form_tag find_matched_path, :method => :post, remote: true do %>
+          <h2 style="float: left; margin-top: -45px;">Compare Products </h2>
+          <div class="alpha six columns">
+            <h3 style="text-align: left;">First Product <h3>
+            <div class="field">
+              <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => 'select2',:prompt => "Select Category" %>
+            </div>
+            <div class="field" style="margin-top:10px;">
+              <%= select_tag 'texon', options_for_select(@brands.collect{ |c| [c.name, c.id] }), :prompt => "Select Brand" %>
+            </div>
+             <div class="field" style="margin-top:10px;">
+              <%= select_tag 'product', options_for_select(@products.collect{ |c| [c.name] }), :prompt => "Select Product" %>
+            </div>
+          </div>  
+          <div class="omega six columns">
+            <h3 style="text-align: left;">Second Product <h3>
+            <div class="field">
+              <%= select_tag 'taxonomy1', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => 'select2',:prompt => "Select Category" %>
+            </div>
+            <div class="field" style="margin-top:10px;">
+              <%= select_tag 'texon1', options_for_select(@brands.collect{ |c| [c.name, c.id] }), :prompt => "Select Brand" %>
+            </div>
+             <div class="field" style="margin-top:10px;">
+              <%= select_tag 'product1', options_for_select(@products.collect{ |c| [c.name] }), :prompt => "Select Product" %>
+            </div>
+          </div>  
+          <%= submit_tag "Compare", :class => "large primary", :style => "margin-top:10px;" %>
+        <% end %>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<script>
+$( document ).ready(function() {
+
+  $("#taxonomy").on("change", function(){
+    var texonomy_id = $(this).val(),
+      url = "/find_texons";
+    $.ajax({
+      type: "get",
+      url: url,
+      data: { texonomy_id: texonomy_id},
+      success: function(data) {
+        var arr = $.parseJSON(data);
+        alert(arr)
+        $('#texon').append('<option value="" > Select Brand</option>');
+        $.each(arr, function(i, item) {
+          $('#texon').append(new Option(item.name,item.id));
+
+        });
+
+      }
+    })
+  })
+});
+</script>

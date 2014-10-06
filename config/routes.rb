@@ -10,8 +10,15 @@ CdnShop::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   Spree::Core::Engine.routes.draw do
-  get "/sale" => "home#sale"
-end
+    get "/sale" => "home#sale"
+    get "/find_order" => "track_order#find_order"
+    get "/compare_product" => "home#compare_product"
+    post "/find_matched" => "home#find_matched"
+    get "/find_texons" => "home#find_texons"
+    get "/contact_us" => "home#contact_us"
+    get "/about_us" => "home#about_us"
+    post "/contact_info" => "home#contact_info"
+  end
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

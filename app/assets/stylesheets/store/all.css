@@ -10,3 +10,8 @@
  *= require_tree .
  *= require store/spree_fancy
 */
+
+#logo img {
+  height:80px;
+  width:150px;
+}
