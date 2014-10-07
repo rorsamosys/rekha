@@ -8,10 +8,10 @@
           <div class="alpha six columns">
             <h3 style="text-align: left;">First Product <h3>
             <div class="field">
-              <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => 'select2',:prompt => "Select Category" %>
+              <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
             <div class="field" style="margin-top:10px;">
-              <%= select_tag 'texon', options_for_select(@brands.collect{ |c| [c.name, c.id] }), :prompt => "Select Brand" %>
+              <%= select_tag 'texon', "",:class=> "", :prompt => "" %>
             </div>
              <div class="field" style="margin-top:10px;">
               <%= select_tag 'product', options_for_select(@products.collect{ |c| [c.name] }), :prompt => "Select Product" %>
@@ -20,7 +20,7 @@
           <div class="omega six columns">
             <h3 style="text-align: left;">Second Product <h3>
             <div class="field">
-              <%= select_tag 'taxonomy1', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => 'select2',:prompt => "Select Category" %>
+              <%= select_tag 'taxonomy1', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
             <div class="field" style="margin-top:10px;">
               <%= select_tag 'texon1', options_for_select(@brands.collect{ |c| [c.name, c.id] }), :prompt => "Select Brand" %>
@@ -38,7 +38,7 @@
 
 <script>
 $( document ).ready(function() {
-
+  var List;
   $("#taxonomy").on("change", function(){
     var texonomy_id = $(this).val(),
       url = "/find_texons";
@@ -46,17 +46,33 @@ $( document ).ready(function() {
       type: "get",
       url: url,
       data: { texonomy_id: texonomy_id},
-      success: function(data) {
-        var arr = $.parseJSON(data);
-        alert(arr)
-        $('#texon').append('<option value="" > Select Brand</option>');
-        $.each(arr, function(i, item) {
-          $('#texon').append(new Option(item.name,item.id));
-
+      success: function (data) {
+        $("#texon").empty();
+        $.each(data.taxons, function (index, optiondata) { 
+          $("#texon").append("<option value='" + optiondata.id + "'>" + optiondata.name + "</option>");
         });
+      }
+    })
+  })
 
+  $("#texon").on("change", function(){
+    var texon_id = $(this).val(),
+      url = "/find_products";
+    $.ajax({
+      type: "get",
+      url: url,
+      data: { texon_id: texon_id},
+      success: function (data) {
+        
       }
     })
   })
 });
 </script>
+
+
+
+
+<style>
+  
+</style>                                                               

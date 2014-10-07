@@ -29,5 +29,7 @@ module Spree
     def about_us
     end  
 
+    def find_products
+    end
   end
 end

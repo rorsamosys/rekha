@@ -3,8 +3,8 @@
     <li id="home-link" data-hook><%= link_to Spree.t(:home), spree.root_path %></li>
     <li id="compare-link" data-hook><%= link_to Spree.t(:compare), spree.compare_product_path %></li>
      <li id="contact-link" data-hook><%= link_to Spree.t(:contact_us), spree.contact_us_path %></li>
-     <li id="adout-link" data-hook><%= link_to Spree.t(:about_us), spree.about_us_path %></li
-     <li id="track-link" data-hook>
+     <li id="adout-link" data-hook><%= link_to Spree.t(:about_us), spree.about_us_path %></li>
+     <li id="track-link" style="float: right; margin-right: -162px; margin-top: 30px;"data-hook>
      	<%= form_tag find_order_path, :method => :get, remote: true do %>
 			  <%= text_field_tag :order_number,nil, :class => 'title', :placeholder =>"Order Number", :style => "height:10px;width: 60%;" %>
 			<%= submit_tag "Find", :class => "small primary", :style => "padding: 1px;" %>
@@ -13,3 +13,19 @@
     <li id="link-to-cart" data-hook><%= link_to_cart %></li>
   </ul>
 </nav>
+<style>
+.container .seven.columns {
+  width: 600px;
+}
+.container .columns {
+  display: inline;
+}
+
+nav #main-nav-bar {
+  margin-top: -40px;
+  text-align: right;
+  border: none;
+  margin-left: -80px;
+}
+
+</style>
