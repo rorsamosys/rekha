@@ -10,11 +10,11 @@
             <div class="field">
               <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
-            <div class="field" style="margin-top:10px;">
-              <%= select_tag 'texon', "",:class=> "", :prompt => "" %>
+            <div class="field" style="margin-top:10px; float: left;" id="texon_list">
+              <%#= select_tag 'texon', "",:class=> "", :prompt => "" %>
             </div>
-             <div class="field" style="margin-top:10px;">
-              <%= select_tag 'product', options_for_select(@products.collect{ |c| [c.name] }), :prompt => "Select Product" %>
+             <div class="field" style="margin-top:10px;" id="product_list">
+              
             </div>
           </div>  
           <div class="omega six columns">
@@ -38,7 +38,6 @@
 
 <script>
 $( document ).ready(function() {
-  var List;
   $("#taxonomy").on("change", function(){
     var texonomy_id = $(this).val(),
       url = "/find_texons";
@@ -47,15 +46,13 @@ $( document ).ready(function() {
       url: url,
       data: { texonomy_id: texonomy_id},
       success: function (data) {
-        $("#texon").empty();
-        $.each(data.taxons, function (index, optiondata) { 
-          $("#texon").append("<option value='" + optiondata.id + "'>" + optiondata.name + "</option>");
-        });
+        $("#texon_list").html(data)
       }
     })
   })
 
   $("#texon").on("change", function(){
+    alert(1)
     var texon_id = $(this).val(),
       url = "/find_products";
     $.ajax({
@@ -63,12 +60,14 @@ $( document ).ready(function() {
       url: url,
       data: { texon_id: texon_id},
       success: function (data) {
-        
+        $("#product_list").html(data)
       }
     })
   })
 });
 </script>
+
+
 
 
 

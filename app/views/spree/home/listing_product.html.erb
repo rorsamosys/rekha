@@ -1,0 +1,33 @@
+<% content_for :sidebar do %>
+  <div data-hook="homepage_sidebar_navigation">
+    <%= form_tag listing_product_path, :method => :get, :id => 'sidebar_products_search' do %>
+    
+    <% if "spree/products" == params[:controller] && @taxon %>
+      <%= render :partial => 'spree/shared/filters' %>
+    <% else %>
+      <%= render :partial => 'spree/shared/taxonomies' %>
+    <% end %>
+    <%= submit_tag Spree.t(:search), :name => nil %>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+<% if !@taxons.blank? %>
+  <div id="taxon-crumbs" data-hook class="alpha columns five omega">
+    <h6 class="product-section-title">Result</h6>
+      <% product = [] %>
+      <% @taxons.each do |taxon| %>
+        <% taxon.products.each do |product| %>
+        <li id="product_<%= product.id %>" class="columns three <%= cycle("alpha", "secondary", "", "omega secondary", :name => "classes") %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+        <div class="product-image">
+          <%= link_to small_image(product, :itemprop => "image"), product, :itemprop => 'url' %>
+        </div>
+        <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
+        <span class="price selling" itemprop="price"><%= display_price(product) %></span>
+      </li>
+        <% end %>
+      <% end %>
+  </div>
+<% end %>

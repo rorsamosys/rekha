@@ -1,5 +1,8 @@
 module Spree
   HomeController.class_eval do
+
+
+    
     def sale
       @products = Product.joins(:variants_including_master).where('spree_variants.sale_price is not null').uniq
     end
@@ -20,8 +23,8 @@ module Spree
     end
 
     def find_texons
-    	@texon = Spree::Taxon.where("taxonomy_id = ?", params[:texonomy_id] )
-      render :json =>{:taxons => @texon}
+      @texon = Spree::Taxon.where("taxonomy_id = ?", params[:texonomy_id] )
+      render :partial =>  'spree/home/find_brand'
     end
 
     def contact_info
@@ -30,6 +33,10 @@ module Spree
     end  
 
     def find_products
+    end
+
+    def listing_product
+      @taxons = Spree::Taxon.where("id IN(?)", params[:taxon]) 
     end
   end
 end
