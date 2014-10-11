@@ -7,8 +7,8 @@ module Spree
           css_class = (current_taxon && current_taxon.self_and_ancestors.include?(taxon)) ? 'current' : nil
           
           content_tag :div, class: css_class do
-           check_box("taxon", "",{}, taxon.id) + 
-           label(:taxon, taxon.name)
+           check_box("taxon", "",{}, taxon.id)  +
+           label(:taxon, "    #{taxon.name}")
           end
         end.join("\n").html_safe
       end

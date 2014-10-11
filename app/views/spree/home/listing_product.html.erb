@@ -15,19 +15,41 @@
 
 
 <% if !@taxons.blank? %>
-  <div id="taxon-crumbs" data-hook class="alpha columns five omega">
+  <div id="taxon-crumbs" data-hook class="alpha columns omega">
     <h6 class="product-section-title">Result</h6>
-      <% product = [] %>
-      <% @taxons.each do |taxon| %>
-        <% taxon.products.each do |product| %>
+    <% @taxons.each do |taxon| %>
+    <% debugger %>
+      <% taxon.products.each do |product| %>
         <li id="product_<%= product.id %>" class="columns three <%= cycle("alpha", "secondary", "", "omega secondary", :name => "classes") %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-        <div class="product-image">
-          <%= link_to small_image(product, :itemprop => "image"), product, :itemprop => 'url' %>
-        </div>
-        <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
-        <span class="price selling" itemprop="price"><%= display_price(product) %></span>
-      </li>
-        <% end %>
+          <div class="product-image">
+            <%= link_to small_image(product, :itemprop => "image"), product, :itemprop => 'url' %>
+          </div>
+          <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
+          <span class="price selling" itemprop="price"><%= display_price(product) %></span>
+        </li>
       <% end %>
+    <% end %>
   </div>
 <% end %>
+
+<style>
+.product-image a {
+-webkit-border-radius: 145px;
+-moz-border-radius: 145px;
+-ms-border-radius: 145px;
+-o-border-radius: 145px;
+border-radius: 216px;
+-webkit-transition-duration: 0.3s;
+-moz-transition-duration: 0.3s;
+-o-transition-duration: 0.3s;
+transition-duration: 0.3s;
+float: left;
+display: block;
+position: relative;
+display: block;
+background-color: white;
+border: 2px solid #b1d08a;
+padding: 27px;
+overflow: hidden;
+}
+</style>
