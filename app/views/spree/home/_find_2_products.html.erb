@@ -1,0 +1,5 @@
+<% if !@products.nil? %>
+	<div class="field">
+	  <%= select_tag 'product_sec', options_for_select(@products.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Product"  %>
+	</div>
+<% end %>	

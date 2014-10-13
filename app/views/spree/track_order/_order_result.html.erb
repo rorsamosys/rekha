@@ -17,12 +17,12 @@
 				<%= "In Cart State"%>
 				<% elsif  order.state == "address"%>
 				<%= "In Address State"%>
+				<% elsif  order.state == "delivery"%>
+				<%= "In Delivery State"%>
+				<% elsif  order.state == "complete"%>
+				<%= "Completed" %>
 				<% elsif  order.state == "confirm"%>
-				<%= "In Payment State"%>
-				<% elsif  order.state == "completed"%>
-				<%= "In Completed State"%>
-				<% elsif  order.state == "confirm"%>
-				<%= "Order Confirmed"%>
+				<%= "Order Confirmed" %>
 				<% elsif  order.state == "cancled"%>
 				<%= "Order Canseled"%>
 				<% elsif  order.state == "returned"%>

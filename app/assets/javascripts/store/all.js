@@ -11,3 +11,4 @@
 
 //= require_tree .
 //= require store/spree_fancy
+//= require store/spree_i18n

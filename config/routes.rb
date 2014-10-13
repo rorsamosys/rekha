@@ -13,13 +13,15 @@ CdnShop::Application.routes.draw do
     get "/sale" => "home#sale"
     get "/find_order" => "track_order#find_order"
     get "/compare_product" => "home#compare_product"
-    post "/find_matched" => "home#find_matched"
+    get "/find_matched" => "home#find_matched"
     get "/find_texons" => "home#find_texons"
     get "/find_products" => "home#find_products"
     get "/contact_us" => "home#contact_us"
     get "/about_us" => "home#about_us"
     post "/contact_info" => "home#contact_info"
     get "/listing_product" => "home#listing_product"
+    get "/find_2_texons" => "home#find_2_texons"
+    get "/find_2_products" => "home#find_2_products"
   end
 
   # You can have the root of your site routed with "root"

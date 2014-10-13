@@ -13,3 +13,4 @@
 //= require admin/spree_fancy
 //= require highcharts
 //= require highcharts/highcharts-more
+//= require admin/spree_i18n

@@ -2,8 +2,8 @@
   <div class="bx-wrapper slider-pager"></div>
   <div id="content" class="columns sixteen" data-hook="">
     <div id="welcome-message">
-      <div class="container">
-        <%= form_tag find_matched_path, :method => :post, remote: true do %>
+      <div class="container" id="compare_container">
+        <%= form_tag find_matched_path, :method => :get, remote: true, :id => "compare_product" do %>
           <h2 style="float: left; margin-top: -45px;">Compare Products </h2>
           <div class="alpha six columns">
             <h3 style="text-align: left;">First Product <h3>
@@ -11,9 +11,8 @@
               <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
             <div class="field" style="margin-top:10px; float: left;" id="texon_list">
-              <%#= select_tag 'texon', "",:class=> "", :prompt => "" %>
             </div>
-             <div class="field" style="margin-top:10px;" id="product_list">
+            <div class="field" style="margin-top: 55px;text-align: left;" id="product_list">
               
             </div>
           </div>  
@@ -22,11 +21,10 @@
             <div class="field">
               <%= select_tag 'taxonomy1', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
-            <div class="field" style="margin-top:10px;">
-              <%= select_tag 'texon1', options_for_select(@brands.collect{ |c| [c.name, c.id] }), :prompt => "Select Brand" %>
+            <div class="field" style="margin-top:10px; float: left;" id="texon_list_sec">
             </div>
-             <div class="field" style="margin-top:10px;">
-              <%= select_tag 'product1', options_for_select(@products.collect{ |c| [c.name] }), :prompt => "Select Product" %>
+             <div class="field" style="margin-top: 55px;text-align: left;" id="product_list1">
+              
             </div>
           </div>  
           <%= submit_tag "Compare", :class => "large primary", :style => "margin-top:10px;" %>
@@ -51,8 +49,7 @@ $( document ).ready(function() {
     })
   })
 
-  $("#texon").on("change", function(){
-    alert(1)
+  $("#texon_list").on("change", "#taxon_id", function(){
     var texon_id = $(this).val(),
       url = "/find_products";
     $.ajax({
@@ -64,14 +61,63 @@ $( document ).ready(function() {
       }
     })
   })
+
+  $("#taxonomy1").on("change", function(){
+    var texonomy_id = $(this).val(),
+      url = "/find_2_texons";
+    $.ajax({
+      type: "get",
+      url: url,
+      data: { texonomy_id1: texonomy_id},
+      success: function (data) {
+        $("#texon_list_sec").html(data)
+      }
+    })
+  })
+
+  $("#texon_list_sec").on("change", "#taxon_id2", function(){
+    var texon_id = $(this).val(),
+      url = "/find_2_products";
+    $.ajax({
+      type: "get",
+      url: url,
+      data: { texon_id: texon_id},
+      success: function (data) {
+        $("#product_list1").html(data)
+      }
+    })
+  })
+
+  $( "#compare_product" ).submit(function() {
+    var taxon_id = $("#taxon_id").val(),
+        taxon_id2 = $("#taxon_id2").val(),
+        product_id = $("#product_id").val(),
+        product_sec = $("#product_sec").val(),
+        url = "/find_matched";
+    if(product_id == "" && product_sec == ""){
+      alert("Please Selctt Item")
+      return false;
+    }
+
+    if(taxon_id =="" && taxon_id2 == ""){
+      alert("Please Selctt Brand")
+      return false;
+    }    
+    $.ajax({
+      type: "get",
+      url: url,
+      data: {taxon_id: taxon_id, taxon_id2: taxon_id2, product_id: product_id, product_sec:product_sec},
+      success: function (data) {
+        $("#compare_container").html(data)
+      }
+    })
+  })
 });
 </script>
-
-
-
-
-
-
 <style>
-  
-</style>                                                               
+#wrapper h3, #wrapper .search-results-title{
+  border-bottom: 2px solid #FFFFFF;
+  color: #50a2f3;
+}
+
+</style>                                                            

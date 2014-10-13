@@ -1,1 +1,1 @@
-$('#wrapper').html("<%= j render partial: 'spree/home/matched_products', locals: {texon: @texon, texon1: @texon1 } %>");
+$('#compare_container').html("<%= escape_javascript(render partial: 'spree/home/matched_products') %>");

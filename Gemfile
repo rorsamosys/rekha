@@ -48,7 +48,7 @@ gem 'spree', github: 'spree/spree', branch: '2-1-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-1-stable'
 gem 'spree_fancy', :github => 'spree/spree_fancy', :branch => '2-1-stable'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '2-1-stable'
-#gem 'spree_essential_content', :git => 'https://github.com/FineLineAutomation/spree_essential_content.git', branch: 'master'
+#gem 'spree_static_content', github: 'spree/spree_static_content', branch: 'master'
 #gem 'spree_multilingual_static_content', :github => "azinazadi/spree-multilingual-static-content"
-
+gem 'spree_i18n', github: 'spree/spree_i18n', branch: '2-1-stable'
 gem "highcharts-rails", "~> 3.0.0"

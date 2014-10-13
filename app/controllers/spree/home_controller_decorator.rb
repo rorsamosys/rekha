@@ -1,11 +1,10 @@
 module Spree
   HomeController.class_eval do
 
-
-    
     def sale
       @products = Product.joins(:variants_including_master).where('spree_variants.sale_price is not null').uniq
     end
+
     def contact_us
     end
 
@@ -16,10 +15,9 @@ module Spree
 		end
 
     def find_matched
-    	@texon = Spree::Taxon.where("id = ?", params[:taxon] )
-    	@texon1 = Spree::Taxon.where("id = ?", params[:texon1] )
-    	@product = Spree::Product.where("name ILIKE = ?", params[:product])
-    	@product1 = Spree::Product.where("name ILIKE = ?", params[:product1])
+    	@product = Spree::Product.where("id = ?", params[:product_id])
+    	@product1 = Spree::Product.where("id = ?", params[:product_sec]) 
+      render :partial =>  'spree/home/matched_products'
     end
 
     def find_texons
@@ -27,12 +25,29 @@ module Spree
       render :partial =>  'spree/home/find_brand'
     end
 
+    def find_2_texons
+      @texon = Spree::Taxon.where("taxonomy_id = ?", params[:texonomy_id1] )
+      render :partial =>  'spree/home/find_2_brand'
+    end
+
+    def find_2_products
+      taxon = Spree::Taxon.find(params[:texon_id])
+      @products = taxon.products.ransack(params[:q]).result
+      @products = @products.page(params[:page]).per(500 || params[:per_page])
+      render :partial =>  'spree/home/find_2_products'
+    end
+
     def contact_info
     end
+
     def about_us
     end  
 
     def find_products
+      taxon = Spree::Taxon.find(params[:texon_id])
+      @products = taxon.products.ransack(params[:q]).result
+      @products = @products.page(params[:page]).per(500 || params[:per_page])
+      render :partial =>  'spree/home/find_products'
     end
 
     def listing_product

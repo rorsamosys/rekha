@@ -3,23 +3,3 @@
 	  <%= select_tag 'taxon_id', options_for_select(@texon.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Brand" %>
 	</div>
 <% end %>	
-
-
-<script>
-$( document ).ready(function() {
- 
-  $("#texon_id").on("change", function(){
-    alert(1)
-    var texon_id = $(this).val(),
-      url = "/find_products";
-    $.ajax({
-      type: "get",
-      url: url,
-      data: { texon_id: texon_id},
-      success: function (data) {
-        $("#product_list").html(data)
-      }
-    })
-  })
-});
-</script>
