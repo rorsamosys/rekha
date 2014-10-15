@@ -12,21 +12,21 @@
     	<td><%= order.bill_address %></td>
 			<td>
 				<% if order.state == "payment" %>
-				<%= "In Payment State"%>
+					<%= "In Payment State"%>
 				<% elsif  order.state == "cart"%>
-				<%= "In Cart State"%>
+					<%= "In Cart State"%>
 				<% elsif  order.state == "address"%>
-				<%= "In Address State"%>
+					<%= "In Address State"%>
 				<% elsif  order.state == "delivery"%>
-				<%= "In Delivery State"%>
+					<%= "In Delivery State"%>
 				<% elsif  order.state == "complete"%>
-				<%= "Completed" %>
+					<%= "Completed" %>
 				<% elsif  order.state == "confirm"%>
-				<%= "Order Confirmed" %>
+					<%= "Order Confirmed" %>
 				<% elsif  order.state == "cancled"%>
-				<%= "Order Canseled"%>
+					<%= "Order Canseled"%>
 				<% elsif  order.state == "returned"%>
-				<%= "Order Returned"%>
+					<%= "Order Returned"%>
 				<% end %></td>
     </tbody>
   </table>

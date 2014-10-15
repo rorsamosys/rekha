@@ -15,6 +15,8 @@ module Spree
 		end
 
     def find_matched
+      @taxon = Spree::Taxon.where("id = ?", params[:taxon_id] )
+      @taxon2 = Spree::Taxon.where("id = ?", params[:taxon_id2] )
     	@product = Spree::Product.where("id = ?", params[:product_id])
     	@product1 = Spree::Product.where("id = ?", params[:product_sec]) 
       render :partial =>  'spree/home/matched_products'
@@ -51,7 +53,10 @@ module Spree
     end
 
     def listing_product
-      @taxons = Spree::Taxon.where("id IN(?)", params[:taxon]) 
+      taxon_ids = params[:taxon].map(&:to_i).reject { |n| n == 0 }
+      @searcher = build_searcher(params.merge(:taxon => taxon_ids))
+      @products = @searcher.retrieve_products
+      #@taxons = Spree::Taxon.where("id IN(?)", params[:taxon]) 
     end
   end
 end

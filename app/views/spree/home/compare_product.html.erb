@@ -94,12 +94,12 @@ $( document ).ready(function() {
         product_id = $("#product_id").val(),
         product_sec = $("#product_sec").val(),
         url = "/find_matched";
-    if(product_id == "" && product_sec == ""){
-      alert("Please Selctt Item")
+    if(product_id == "" || product_sec == ""){
+      alert("Please Selctt Product")
       return false;
     }
 
-    if(taxon_id =="" && taxon_id2 == ""){
+    if(taxon_id =="" || taxon_id2 == ""){
       alert("Please Selctt Brand")
       return false;
     }    
