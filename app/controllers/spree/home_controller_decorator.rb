@@ -37,7 +37,7 @@ module Spree
       @products = taxon.products.ransack(params[:q]).result
       @products = @products.page(params[:page]).per(500 || params[:per_page])
       render :partial =>  'spree/home/find_2_products'
-    end
+    end   
 
     def contact_info
     end
@@ -53,10 +53,10 @@ module Spree
     end
 
     def listing_product
-      taxon_ids = params[:taxon].map(&:to_i).reject { |n| n == 0 }
-      @searcher = build_searcher(params.merge(:taxon => taxon_ids))
-      @products = @searcher.retrieve_products
-      #@taxons = Spree::Taxon.where("id IN(?)", params[:taxon]) 
+      # taxon_ids = params[:taxon].map(&:to_i).reject { |n| n == 0 }
+      # @searcher = build_searcher(params.merge(:taxon => taxon_ids))
+      # @products = @searcher.retrieve_products
+      @taxons = Spree::Taxon.where("taxonomy_id IN(?)", params[:taxon_category])
     end
   end
 end
