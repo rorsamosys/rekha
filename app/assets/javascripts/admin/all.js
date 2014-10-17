@@ -14,3 +14,9 @@
 //= require highcharts
 //= require highcharts/highcharts-more
 //= require admin/spree_i18n
+//= require admin/spree_products_qa
+//= require admin/spree_product_like
+
+//= require admin/spree_favorite_products
+//= require admin/spree_maker_search
+//= require admin/spree_customer_care

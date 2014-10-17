@@ -12,3 +12,9 @@
 //= require_tree .
 //= require store/spree_fancy
 //= require store/spree_i18n
+//= require store/spree_products_qa
+//= require store/spree_product_like
+
+//= require store/spree_favorite_products
+//= require store/spree_maker_search
+//= require store/spree_customer_care

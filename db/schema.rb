@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013103413) do
+ActiveRecord::Schema.define(version: 20141017132558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,16 @@ ActiveRecord::Schema.define(version: 20141013103413) do
   add_index "spree_adjustments", ["order_id"], name: "index_spree_adjustments_on_order_id", using: :btree
   add_index "spree_adjustments", ["source_type", "source_id"], name: "index_spree_adjustments_on_source_type_and_source_id", using: :btree
 
+  create_table "spree_answers", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_answers", ["question_id"], name: "index_spree_answers_on_question_id", using: :btree
+
   create_table "spree_assets", force: true do |t|
     t.integer  "viewable_id"
     t.string   "viewable_type"
@@ -185,6 +195,16 @@ ActiveRecord::Schema.define(version: 20141013103413) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "spree_favorites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_favorites", ["user_id", "product_id"], name: "index_spree_favorites_on_user_id_and_product_id", unique: true, using: :btree
+  add_index "spree_favorites", ["user_id"], name: "index_spree_favorites_on_user_id", using: :btree
 
   create_table "spree_gateways", force: true do |t|
     t.string   "type"
@@ -517,6 +537,17 @@ ActiveRecord::Schema.define(version: 20141013103413) do
     t.datetime "updated_at"
   end
 
+  create_table "spree_questions", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.boolean  "is_visible", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_questions", ["product_id"], name: "index_spree_questions_on_product_id", using: :btree
+
   create_table "spree_return_authorizations", force: true do |t|
     t.string   "number"
     t.string   "state"
@@ -822,6 +853,7 @@ ActiveRecord::Schema.define(version: 20141013103413) do
     t.datetime "updated_at"
     t.string   "spree_api_key",          limit: 48
     t.datetime "remember_created_at"
+    t.integer  "assistant_id"
   end
 
   add_index "spree_users", ["email"], name: "email_idx_unique", unique: true, using: :btree

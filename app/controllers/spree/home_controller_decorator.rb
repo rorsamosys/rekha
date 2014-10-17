@@ -8,6 +8,18 @@ module Spree
     def contact_us
     end
 
+    def index
+      debugger
+      slider = Spree::Taxon.where(:name => 'Slider').first
+      @slider_products = slider.products.active if slider
+
+      featured = Spree::Taxon.where(:name => 'Featured').first
+      @featured_products = featured.products.active if featured
+
+      latest = Spree::Taxon.where(:name => 'Latest').first
+      @latest_products = latest.products.active if latest
+    end
+      
     def compare_product
     	@taxonomies = Spree::Taxonomy.all
     	@brands = Spree::Taxon.where("taxonomy_id = ?", 2 )
@@ -56,7 +68,7 @@ module Spree
       # taxon_ids = params[:taxon].map(&:to_i).reject { |n| n == 0 }
       # @searcher = build_searcher(params.merge(:taxon => taxon_ids))
       # @products = @searcher.retrieve_products
-      @taxons = Spree::Taxon.where("taxonomy_id IN(?)", params[:taxon_category])
+      @taxons = Spree::Taxon.where("id IN(?)", params[:taxon])
     end
   end
 end

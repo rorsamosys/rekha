@@ -16,7 +16,7 @@
 		 	<% end %>
 		</h6>
 		<% @product.each do |product| %>
-		<li id="product_<%= product.id %>" class="columns four" data-hook="featured_products_list_item" style="margin-top: 50px;">
+		<li id="product_<%= product.id %>" class="" data-hook="featured_products_list_item" style="float: left;">
 			<div class="">
 			  <%= link_to product_image(product), product %>
 			</div>
@@ -28,7 +28,7 @@
 		<% end %>
 
 		<% @product1.each do |product| %>
-		<li id="product_<%= product.id %>" class="columns four" data-hook="featured_products_list_item" style="margin-top: 50px; margin-left: 30%;">
+		<li id="product_<%= product.id %>" class="columns four" data-hook="featured_products_list_item" style="">
 			<div class="">
 			  <%= link_to product_image(product), product %>
 			</div>
