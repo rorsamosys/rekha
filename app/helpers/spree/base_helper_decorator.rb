@@ -8,8 +8,8 @@ module Spree
           
           content_tag :div, class: css_class do
             taxonomy = Spree::Taxonomy.find_by_id(taxon[:taxonomy_id])
-            check_box_tag("taxon[]", taxon.id )  +
-            label(:taxon, "    #{taxon.name}")  
+              check_box_tag("taxon[#{taxonomy.name}][]", taxon.id )  +
+            label(:taxon, "    #{taxon.name}") 
           end
         end.join("\n").html_safe
       end

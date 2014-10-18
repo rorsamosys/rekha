@@ -14,16 +14,16 @@
 
 
 
-<% if !@taxons.blank? %>
+<% if !@products.blank? %>
   <div id="taxon-crumbs" data-hook class="alpha columns omega">
     <h6 class="product-section-title">Result</h6>
-    <% @products_arr = [] %>
-    <% @taxons.each do |taxon| %>
-      <% taxon.products.each do |product| %>
-        <% @products_arr << product %>
-      <% end %>
-    <% end %>
-    <% @products_arr.uniq.each do |product| %>
+    <%# @products_arr = [] %>
+    <%# @taxons.each do |taxon| %>
+      <%# taxon.products.each do |product| %>
+        <%# @products_arr << product %>
+      <%# end %>
+    <%# end %>
+    <% @products.each do |product| %>
       <li id="product_<%= product.id %>" class="columns three <%= cycle("alpha", "secondary", "", "omega secondary", :name => "classes") %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
         <div class="product-image">
           <%= link_to small_image(product, :itemprop => "image"), product, :itemprop => 'url' %>
