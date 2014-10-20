@@ -64,12 +64,7 @@ module Spree
     end
 
     def listing_product
-      @taxons = nil
-       products = []
-      # taxon_ids = params[:taxon].map(&:to_i).reject { |n| n == 0 }
-      # @searcher = build_searcher(params.merge(:taxon => taxon_ids))
-      # @products = @searcher.retrieve_products
-
+      products = []
      
       if params["taxon"] and not params["taxon"].blank?
         params["taxon"].each_with_index do |taxon_ids, index|
@@ -79,40 +74,14 @@ module Spree
           if index == 0
             products = @products.collect{|p|p.id}
           end
-          
           products = products & Spree::Product.joins("JOIN spree_products_taxons on spree_products_taxons.product_id = spree_products.id
-                          JOIN spree_taxons on spree_products_taxons.taxon_id = spree_taxons.id")
-                  .where("spree_products_taxons.taxon_id IN(?)", taxon_ids[1]).collect{|p|p.id}
-          
-          # if @products
-          #   taxon_ids[1].each do |taxon_id|
-          #     @products.each do |p|
-          #       p.taxons.each do |texon|
-          #         products << p.id if texon.id == taxon_id.to_i
-          #       end
-          #     end
-          #   end
-          # end
+                     JOIN spree_taxons on spree_products_taxons.taxon_id = spree_taxons.id")
+                     .where("spree_products_taxons.taxon_id IN(?)", taxon_ids[1]).collect{|p|p.id}
         end
+        @products = Spree::Product.where("id IN(?)", products) unless products.blank?
       else
         @products = Spree::Product.all
       end
-      
-      #if params["taxon"] and not params["taxon"].blank?
-        @products = Spree::Product.where("id IN(?)", products) unless products.blank?
-      #end
-      
-
-
-
-
-
-
-        # if @products
-        #   @products = @products.reject{|p| p.taxons.id}
-        # end
-      #@taxons = Spree::Taxon.joins("spree_taxons on spree_products_taxons.taxon_id = spree_taxons.id")
-        #where("spree_products_taxons.taxon_id IN(?)", params[:taxon])
     end
   end
 end
