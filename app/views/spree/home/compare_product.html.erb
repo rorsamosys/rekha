@@ -10,10 +10,12 @@
             <div class="field">
               <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
-            <div class="field" style="margin-top:10px; float: left;" id="texon_list">
+            <div class="field" style="margin-top:10px; float: left;">
+              <select class="" id="texon_list"><option value="">Select Brand</option></select>
+          
             </div>
-            <div class="field" style="margin-top: 55px;text-align: left;" id="product_list">
-              
+            <div class="field" style="margin-top: 55px;text-align: left;" id="">
+              <select class="" id="product_list"><option value="">Select Product</option></select>
             </div>
           </div>  
           <div class="omega six columns">
@@ -21,9 +23,11 @@
             <div class="field">
               <%= select_tag 'taxonomy1', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
-            <div class="field" style="margin-top:10px; float: left;" id="texon_list_sec">
+            <div class="field" style="margin-top:10px; float: left;" id="">
+              <select class="" id="texon_list_sec"><option value="">Select Brand</option></select>
             </div>
-             <div class="field" style="margin-top: 55px;text-align: left;" id="product_list1">
+             <div class="field" style="margin-top: 55px;text-align: left;" id="">
+              <select class="" id="product_list1"><option value="">Select Product</option></select>
               
             </div>
           </div>  
@@ -44,7 +48,13 @@ $( document ).ready(function() {
       url: url,
       data: { texonomy_id: texonomy_id},
       success: function (data) {
-        $("#texon_list").html(data)
+        var myData = data.texon;
+        var h = [];
+
+        $.each(myData, function(i, val) {
+            h.push('<option value="' + val.id+ '">' + val.name + '</option>');
+        });
+        $('#texon_list').empty().append(h.join(''));
       }
     })
   })
@@ -57,7 +67,13 @@ $( document ).ready(function() {
       url: url,
       data: { texon_id: texon_id},
       success: function (data) {
-        $("#product_list").html(data)
+        var myData = data.products;
+        var h = [];
+
+        $.each(myData, function(i, val) {
+            h.push('<option value="' + val.id+ '">' + val.name + '</option>');
+        });
+        $('#product_list').empty().append(h.join(''));
       }
     })
   })
@@ -70,7 +86,13 @@ $( document ).ready(function() {
       url: url,
       data: { texonomy_id1: texonomy_id},
       success: function (data) {
-        $("#texon_list_sec").html(data)
+        var myData = data.texon;
+        var h = [];
+
+        $.each(myData, function(i, val) {
+            h.push('<option value="' + val.id+ '">' + val.name + '</option>');
+        });
+        $('#texon_list_sec').empty().append(h.join(''));
       }
     })
   })
@@ -83,7 +105,13 @@ $( document ).ready(function() {
       url: url,
       data: { texon_id: texon_id},
       success: function (data) {
-        $("#product_list1").html(data)
+        var myData = data.products;
+        var h = [];
+
+        $.each(myData, function(i, val) {
+            h.push('<option value="' + val.id+ '">' + val.name + '</option>');
+        });
+        $('#product_list1').empty().append(h.join(''));
       }
     })
   })

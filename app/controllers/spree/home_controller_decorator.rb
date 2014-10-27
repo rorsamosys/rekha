@@ -35,19 +35,20 @@ module Spree
 
     def find_texons
       @texon = Spree::Taxon.where("taxonomy_id = ?", params[:texonomy_id] )
-      render :partial =>  'spree/home/find_brand'
+
+      render :json => {:texon =>  @texon} 
     end
 
     def find_2_texons
       @texon = Spree::Taxon.where("taxonomy_id = ?", params[:texonomy_id1] )
-      render :partial =>  'spree/home/find_2_brand'
+      render :json => {:texon =>  @texon} 
     end
 
     def find_2_products
       taxon = Spree::Taxon.find(params[:texon_id])
       @products = taxon.products.ransack(params[:q]).result
       @products = @products.page(params[:page]).per(500 || params[:per_page])
-      render :partial =>  'spree/home/find_2_products'
+      render :json => {:products =>  @products} 
     end   
 
     def contact_info

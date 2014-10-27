@@ -14,19 +14,22 @@
 
 
 
-<% if !@products.blank? %>
-  <ul id="taxon-crumbs" data-hook class="alpha columns omega">
-    <h6 class="product-section-title">Result</h6>
-    <% @products.each do |product| %>
-      <li id="product_<%= product.id %>" class="columns three <%= cycle("alpha", "secondary", "", "omega secondary", :name => "classes") %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-        <div class="product-image">
-          <%= link_to small_image(product, :itemprop => "image"), product, :itemprop => 'url' %>
-        </div>
-          <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
-        <span class="price selling" itemprop="price"><%= display_price(product) %></span>
-      </li>
+
+<% if params[:keywords] %>
+
+  <div data-hook="search_results">
+    <% if @products.empty? %>
+      <h6 class="search-results-title"><%= Spree.t(:no_products_found) %></h6>
+    <% else %>
+      <%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
     <% end %>
-  </ul>
+  </div>
+
+<% else %>
+
+  <div data-hook="homepage_products">
+    <%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+  </div>
 <% end %>
 
 <style>
