@@ -21,8 +21,6 @@ module Spree
       
     def compare_product
     	@taxonomies = Spree::Taxonomy.all
-    	@brands = Spree::Taxon.where("taxonomy_id = ?", 2 )
-    	@products = Spree::Product.all
 		end
 
     def find_matched
@@ -35,20 +33,22 @@ module Spree
 
     def find_texons
       @texon = Spree::Taxon.where("taxonomy_id = ?", params[:texonomy_id] )
-
-      render :json => {:texon =>  @texon} 
+      render :partial =>  'spree/home/find_brand'
+      #render :json => {:texon =>  @texon} 
     end
 
     def find_2_texons
       @texon = Spree::Taxon.where("taxonomy_id = ?", params[:texonomy_id1] )
-      render :json => {:texon =>  @texon} 
+      render :partial =>  'spree/home/find_2_brand'
+      #render :json => {:texon =>  @texon} 
     end
 
     def find_2_products
       taxon = Spree::Taxon.find(params[:texon_id])
       @products = taxon.products.ransack(params[:q]).result
       @products = @products.page(params[:page]).per(500 || params[:per_page])
-      render :json => {:products =>  @products} 
+      render :partial =>  'spree/home/find_2_products'
+      #render :json => {:products =>  @products} 
     end   
 
     def contact_info

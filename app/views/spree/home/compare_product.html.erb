@@ -6,28 +6,25 @@
         <%= form_tag find_matched_path, :method => :get, remote: true, :id => "compare_product" do %>
           <h2 style="float: left; margin-top: -45px;">Compare Products </h2>
           <div class="alpha six columns">
-            <h3 style="text-align: left;">First Product <h3>
-            <div class="field">
+            <h3 style="text-align: left;">First Product </h3>
+            <div class="field" style="margin-top:10px;">
               <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
-            <div class="field" style="margin-top:10px; float: left;">
-              <select class="" id="texon_list"><option value="">Select Brand</option></select>
-          
+            <div class="field" style="margin-top:20px; float: left;" id="texon_list">
+              
             </div>
-            <div class="field" style="margin-top: 55px;text-align: left;" id="">
-              <select class="" id="product_list"><option value="">Select Product</option></select>
+            <div class="field" style="margin-top: 24%;text-align: left;" id="product_list">
+             
             </div>
           </div>  
           <div class="omega six columns">
-            <h3 style="text-align: left;">Second Product <h3>
-            <div class="field">
+            <h3 style="text-align: left;">Second Product </h3>
+            <div class="field" style="margin-top:10px;">
               <%= select_tag 'taxonomy1', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
-            <div class="field" style="margin-top:10px; float: left;" id="">
-              <select class="" id="texon_list_sec"><option value="">Select Brand</option></select>
+            <div class="field" style="margin-top:20px; float: left;" id="texon_list_sec">
             </div>
-             <div class="field" style="margin-top: 55px;text-align: left;" id="">
-              <select class="" id="product_list1"><option value="">Select Product</option></select>
+            <div class="field" style="margin-top: 24%;text-align: left;" id="product_list1">
               
             </div>
           </div>  
@@ -48,13 +45,7 @@ $( document ).ready(function() {
       url: url,
       data: { texonomy_id: texonomy_id},
       success: function (data) {
-        var myData = data.texon;
-        var h = [];
-
-        $.each(myData, function(i, val) {
-            h.push('<option value="' + val.id+ '">' + val.name + '</option>');
-        });
-        $('#texon_list').empty().append(h.join(''));
+        $("#texon_list").html(data)
       }
     })
   })
@@ -67,13 +58,7 @@ $( document ).ready(function() {
       url: url,
       data: { texon_id: texon_id},
       success: function (data) {
-        var myData = data.products;
-        var h = [];
-
-        $.each(myData, function(i, val) {
-            h.push('<option value="' + val.id+ '">' + val.name + '</option>');
-        });
-        $('#product_list').empty().append(h.join(''));
+        $('#product_list').html(data)
       }
     })
   })
@@ -86,13 +71,7 @@ $( document ).ready(function() {
       url: url,
       data: { texonomy_id1: texonomy_id},
       success: function (data) {
-        var myData = data.texon;
-        var h = [];
-
-        $.each(myData, function(i, val) {
-            h.push('<option value="' + val.id+ '">' + val.name + '</option>');
-        });
-        $('#texon_list_sec').empty().append(h.join(''));
+        $('#texon_list_sec').html(data)
       }
     })
   })
@@ -105,13 +84,7 @@ $( document ).ready(function() {
       url: url,
       data: { texon_id: texon_id},
       success: function (data) {
-        var myData = data.products;
-        var h = [];
-
-        $.each(myData, function(i, val) {
-            h.push('<option value="' + val.id+ '">' + val.name + '</option>');
-        });
-        $('#product_list1').empty().append(h.join(''));
+        $('#product_list1').html(data)
       }
     })
   })
@@ -147,5 +120,46 @@ $( document ).ready(function() {
   border-bottom: 2px solid #FFFFFF;
   color: #50a2f3;
 }
+
+.dropdown_menu{
+  position: relative;
+  width: 160px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 3px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  color: #919191;
+  font-size: 13px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  border-width: 3px;
+  border-color: #dedede;
+  height: 37px;
+  
+}
+
+.dropdown_menu div {
+  border-width: 3px;
+  border-color: #dedede;
+  border-top: none;
+}
+
+
+.dropdown_menu.open {
+  z-index: 2;
+}
+
+
+.dropdown_menu:hover .selected {
+  color: green;
+  background-color: #8dba53;
+}
+
 
 </style>                                                            

@@ -1,54 +1,48 @@
 <div id="compare_container" data-hook="" class="container">
 	<% if not @product.blank? && @product1.blank? %>
-	<h6 class="product-section-head">Compare
-	  <% @taxon.each do |tax| %>
-	  	<%=  tax.name %>
-	  <% end %>
-		
-		 	<% @product.each do |product1| %>
-		 		<%= product1.name %>
-		 	<% end %>  And  
-		 	<% @taxon2.each do |tax| %>
-	  	<%=  tax.name %>
-	  <% end %>
-		 	<% @product1.each do |product1|%>
-		 		<%= product1.name %>
-		 	<% end %>
+		<h6 class="product-section-head">Compare
+			<% @product.each do |product1| %>
+			 	<%= product1.name %>
+			<% end %>  And  
+			
+			<% @product1.each do |product1|%>
+			 	<%= product1.name %>
+			<% end %>
 		</h6>
-		<% @product.each do |product| %>
-		<li id="product_<%= product.id %>" class="" data-hook="featured_products_list_item" style="float: left;">
-			<div class="">
-			  <%= link_to product_image(product), product %>
-			</div>
-			<%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %>
-			<div class="product-sku">
-			</div>
-			<span class="price selling "><%= product.display_price %></span>
-		</li>
-		<% end %>
+		<div style="margin-top: 10%;">
+			<% @product.each do |product| %>
+			<div class="first_product"style="">
+				<%= link_to product_image(product), product %>
+				<div>
+				<%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %><br>
+				<span class="price selling "><%= product.display_price %></span>
+				</div>
+			</div>		
+			<% end %>
 
-		<% @product1.each do |product| %>
-		<li id="product_<%= product.id %>" class="columns four" data-hook="featured_products_list_item" style="">
-			<div class="">
-			  <%= link_to product_image(product), product %>
+			<% @product1.each do |product| %>
+			<div>
+				<div class="">
+				  <%= link_to product_image(product), product %>
+				</div>
+				<%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %><br>
+				<span class="price selling "><%= product.display_price %></span>
 			</div>
-			<%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %>
-			<div class="product-sku">
-			</div>
-			<span class="price selling "><%= product.display_price %></span>
-		</li>
-		<% end %>
+			<% end %>
+	  </div>		
 	<% end %>	
-
 </div>
 
 
 <style>
 .product-section-head
 {color: #ff9600;
-/* border-bottom: 2px solid #ffeacc; */
 margin-bottom: 16px;
 font-size: 25px;
-float: left;
+}
+
+.first_product{
+	float: left;
+	margin-left: 147px;
 }
 </style>
