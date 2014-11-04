@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: cdn_shop_dev
+  database: cdn_shop_development
   username: postgres
   password: cdn123
   pool: 5

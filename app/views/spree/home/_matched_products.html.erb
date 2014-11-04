@@ -3,7 +3,7 @@
 		<h6 class="product-section-head">Compare
 			<% @product.each do |product1| %>
 			 	<%= product1.name %>
-			<% end %>  And  
+			<% end %> <%= Spree.t(:and) %>  
 			
 			<% @product1.each do |product1|%>
 			 	<%= product1.name %>
@@ -35,13 +35,13 @@
 
 
 <style>
-.product-section-head
-{color: #ff9600;
-margin-bottom: 16px;
-font-size: 25px;
+.product-section-head {
+	color: #ff9600;
+  margin-bottom: 16px;
+	font-size: 25px;
 }
 
-.first_product{
+.first_product {
 	float: left;
 	margin-left: 147px;
 }

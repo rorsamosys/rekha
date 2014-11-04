@@ -1,0 +1,21 @@
+ru:
+  spree:
+    and: "и"
+    th_number: "число"
+    th_address: "адрес"
+    th_order_state: "Заказать государство"
+    os_payment:  "В платежной государства"
+    os_cart: "В корзину государства"
+    os_address: "В адресной государства"
+    os_delivery: "В состоянии поставки"
+    os_completed: "Заказать Завершен"
+    os_confirmed: "Заказать Подтвержденные"
+    os_canseled : "Заказать Canseled"
+    os_returned: "Заказать Вернулся"
+    link_cdn_sol: "CDN Решения Индор"
+    contact_us: "свяжитесь с нами"
+    about_us: "о нас"
+    compare: "сравнить"
+    shop: "магазин"
+    order_number: "номер заказа"
+

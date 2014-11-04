@@ -22,6 +22,8 @@ CdnShop::Application.routes.draw do
     get "/listing_product" => "home#listing_product"
     get "/find_2_texons" => "home#find_2_texons"
     get "/find_2_products" => "home#find_2_products"
+
+    resources :ratings, only: :update
   end
 
   # You can have the root of your site routed with "root"

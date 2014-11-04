@@ -316,8 +316,6 @@ GEM
       thor (~> 0.14)
     spree_add_on_menu (0.1.1)
       spree_core (~> 2.1.4)
-    spree_favorite_products (2.0.3)
-      spree_core (~> 2.1.0)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -368,7 +366,6 @@ DEPENDENCIES
   spree_auth_devise!
   spree_customer_care!
   spree_fancy!
-  spree_favorite_products (= 2.0.3)
   spree_gateway!
   spree_i18n!
   spree_maker_search!

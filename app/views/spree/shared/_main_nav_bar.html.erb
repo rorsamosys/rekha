@@ -13,7 +13,10 @@
     <li id="link-to-cart" data-hook><%= link_to_cart %></li>
   </ul>
 </nav>
+
+
 <style>
+
 .container .seven.columns {
   width: 600px;
 }
@@ -28,4 +31,44 @@ nav #main-nav-bar {
   margin-left: -80px;
 }
 
+#locale{
+  position: relative;
+  width: 160px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 3px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  color: #919191;
+  font-size: 13px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  border-width: 3px;
+  border-color: #dedede;
+  height: 37px;
+}
+
+#locale div {
+  border-width: 3px;
+  border-color: #dedede;
+  border-top: none;
+}
+
+#locale.open {
+  z-index: 2;
+}
+
+#locale:hover .selected {
+  color: green;
+  background-color: #8dba53;
+}
+
+label{
+  color: #61a1f0;
+}
 </style>

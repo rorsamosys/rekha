@@ -1,0 +1,21 @@
+pt-BR:
+  spree:
+    and: "e"
+    th_number: "número"
+    th_address: "endereço"
+    th_order_state: "Estado ordem"
+    os_payment:  "No estado de Pagamento"
+    os_cart: "no carrinho de compras"
+    os_address: "No Estado Endereço"
+    os_delivery: "No estado de entrega"
+    os_completed: "concluído"
+    os_confirmed: "Confirmed"
+    os_canseled : "ordem Canseled"
+    os_returned: "ordem voltou"
+    link_cdn_sol: "CDN Solutions Indore"
+    contact_us: "entre em contato conosco"
+    about_us: "sobre nós"
+    compare: "comparar"
+    shop: "loja"
+    order_number: "número do pedido"
+

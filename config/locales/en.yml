@@ -20,4 +20,23 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  spree:
+    and: "And"
+    th_number: "Number"
+    th_address: "Address"
+    th_order_state: "Order State"
+    os_payment:  "In Payment State"
+    os_cart: "In Cart"
+    os_address: "In Address State"
+    os_delivery: "In Delivery State"
+    os_completed: "Completed"
+    os_confirmed: "Confirmed"
+    os_canseled : "Order Canseled"
+    os_returned: "Order returned"
+    link_cdn_sol: "CDN Solutions Indore"
+    contact_us: "contact us"
+    about_us: "about us"
+    compare: "Compare"
+    shop: "Shop"
+    order_number: "Order Number"
+

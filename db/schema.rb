@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017132558) do
+ActiveRecord::Schema.define(version: 20141103133747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,25 +173,6 @@ ActiveRecord::Schema.define(version: 20141017132558) do
     t.integer  "address_id"
     t.string   "gateway_customer_profile_id"
     t.string   "gateway_payment_profile_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "spree_currencies", force: true do |t|
-    t.string   "num_code",                   null: false
-    t.string   "char_code",                  null: false
-    t.string   "name",                       null: false
-    t.boolean  "basic",      default: false
-    t.string   "locale"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "spree_currency_converters", force: true do |t|
-    t.integer  "currency_id",               null: false
-    t.datetime "date_req",                  null: false
-    t.float    "nominal",     default: 1.0, null: false
-    t.float    "value",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -547,6 +528,17 @@ ActiveRecord::Schema.define(version: 20141017132558) do
   end
 
   add_index "spree_questions", ["product_id"], name: "index_spree_questions_on_product_id", using: :btree
+
+  create_table "spree_ratings", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.integer  "score",      default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_ratings", ["product_id"], name: "index_spree_ratings_on_product_id", using: :btree
+  add_index "spree_ratings", ["user_id"], name: "index_spree_ratings_on_user_id", using: :btree
 
   create_table "spree_return_authorizations", force: true do |t|
     t.string   "number"

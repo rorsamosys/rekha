@@ -54,6 +54,5 @@ gem 'spree_i18n', github: 'spree/spree_i18n', branch: '2-1-stable'
 gem "highcharts-rails", "~> 3.0.0"
 gem 'spree_products_qa', git: 'https://github.com/netguru/spree_products_qa.git', branch: '2-1-stable'
 gem 'spree_product_like', git: 'https://github.com/netguru/spree_product_like.git', branch: '2-1-stable'
-gem 'spree_favorite_products', '2.0.3'
 gem 'spree_maker_search', github: 'digitalm/spree_maker_search'
 gem 'spree_customer_care', git: 'https://github.com/netguru/spree_customer_care/', branch: '2-1-stable'

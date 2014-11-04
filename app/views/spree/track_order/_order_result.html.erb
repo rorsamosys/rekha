@@ -2,9 +2,9 @@
   <table class="index responsive" id="listing_orders" data-hook="">
     <thead>
     	<tr>
-    		<th>Number</th>
-    		<th>Address</th>
-        <th>Order State</th>
+    		<th><%= Spree.t(:th_number) %></th>
+    		<th><%= Spree.t(:th_address) %></th>
+        <th><%= Spree.t(:th_order_state) %></th>
       </tr>
     </thead>
     <tbody>
@@ -12,21 +12,21 @@
     	<td><%= order.bill_address %></td>
 			<td>
 				<% if order.state == "payment" %>
-					<%= "In Payment State"%>
+					<%= Spree.t(:os_payment) %>
 				<% elsif  order.state == "cart"%>
-					<%= "In Cart State"%>
+					<%= Spree.t(:os_cart) %>
 				<% elsif  order.state == "address"%>
-					<%= "In Address State"%>
+					<%= Spree.t(:os_address) %>
 				<% elsif  order.state == "delivery"%>
-					<%= "In Delivery State"%>
+					<%= Spree.t(:os_delivery) %>
 				<% elsif  order.state == "complete"%>
-					<%= "Completed" %>
+					<%= Spree.t(:os_completed) %>
 				<% elsif  order.state == "confirm"%>
-					<%= "Order Confirmed" %>
+					<%= Spree.t(:os_confirmed) %>
 				<% elsif  order.state == "cancled"%>
-					<%= "Order Canseled"%>
+					<%= Spree.t(:os_canseled) %>
 				<% elsif  order.state == "returned"%>
-					<%= "Order Returned"%>
+					<%= Spree.t(:os_returned) %>
 				<% end %></td>
     </tbody>
   </table>
