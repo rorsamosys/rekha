@@ -22,7 +22,8 @@ CdnShop::Application.routes.draw do
     get "/listing_product" => "home#listing_product"
     get "/find_2_texons" => "home#find_2_texons"
     get "/find_2_products" => "home#find_2_products"
-
+    get "/add_review" => "products#add_review"
+    get "/check_avalability" => "products#check_avalability"
     resources :ratings, only: :update
   end
 

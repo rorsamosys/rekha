@@ -12,13 +12,16 @@ module Spree
 
       @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
       @product_properties = @product.product_properties.includes(:property)
-      
-      @rating = Spree::Rating.where(product_id: @product.id, user_id: spree_current_user.id).first_or_create 
 
-      unless @rating 
-      	@rating = Spree::Rating.create(product_id: @product.id, user_id: spree_current_user.id, score: 0) 
+      if spree_user_signed_in?
+        @rating = Spree::Rating.where(product_id: @product.id, user_id: spree_current_user.id).first_or_create 
+
+        unless @rating 
+        	@rating = Spree::Rating.create(product_id: @product.id, user_id: spree_current_user.id, score: 0) 
+        end
       end
-
+        
+      @reviews = @product.product_reviews.count
 
       referer = request.env['HTTP_REFERER']
       if referer
@@ -34,5 +37,14 @@ module Spree
         end
       end  
   	end
+
+    def add_review
+      @review = Spree::ProductReview.create(:body => params[:body], :product_id => params[:product_id], :user_id => params[:user_id])
+      flash[:review_success] = 'Review Added Successfully'
+    end
+
+    def check_avalability
+      @stock_count = Spree::StockLocation.where('zipcode = ? ', params[:zipcode]).count 
+    end
   end
 end

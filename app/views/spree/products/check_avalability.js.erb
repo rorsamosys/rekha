@@ -1,0 +1,6 @@
+<% if  @stock_count > 0 %>
+	$("#available").html("Available with " + <%= @stock_count %> + " Seller ").append("<%= escape_javascript link_to('Change', '') %>");
+<% else %>
+	$("#available").html("Not available");
+<% end %>	
+

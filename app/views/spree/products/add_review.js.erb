@@ -1,0 +1,4 @@
+<% if flash[:review_success] %>
+	$("#flash_review_messages").show()
+	$("#flash_review_messages").html("<%= escape_javascript flash[:review_success]%>").fadeOut(3000);
+<% end %>

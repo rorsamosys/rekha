@@ -1,6 +1,7 @@
 module Spree
 	Spree::Product.class_eval do
 	  has_many :ratings
+    has_many :product_reviews
     belongs_to :user	
     add_search_scope :in_all_taxons do |*taxons|
         taxons = get_taxons(taxons)
