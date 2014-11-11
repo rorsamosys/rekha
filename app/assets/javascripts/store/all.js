@@ -17,3 +17,6 @@
 //= require store/spree_maker_search
 //= require store/spree_customer_care
 //= require store/jquery.raty.js
+//= require store/spree_wishlist
+//= require jquery.rating
+//= require store/spree_products_qa

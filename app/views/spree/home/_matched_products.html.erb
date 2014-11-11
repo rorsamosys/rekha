@@ -11,23 +11,21 @@
 		</h6>
 		<div style="margin-top: 10%;">
 			<% @product.each do |product| %>
-			<div class="first_product"style="">
-				<%= link_to product_image(product), product %>
-				<div>
-				<%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %><br>
-				<span class="price selling "><%= product.display_price %></span>
-				</div>
-			</div>		
+				<div class="first_product"style="">
+					<h6 class="product-section-head"><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
+					<%= link_to product_image(product), product %>
+					<div class="price selling "><%= product.display_price %></div>
+			    <%= render :partial => 'spree/shared/properties_first' %>
+				</div>		
 			<% end %>
 
 			<% @product1.each do |product| %>
-			<div>
 				<div class="">
+					<h6 class="product-section-head"><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
 				  <%= link_to product_image(product), product %>
+				  <div class="price selling "><%= product.display_price %></div>
+				    <%= render :partial => 'spree/shared/properties_second' %>
 				</div>
-				<%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %><br>
-				<span class="price selling "><%= product.display_price %></span>
-			</div>
 			<% end %>
 	  </div>		
 	<% end %>	
@@ -37,7 +35,7 @@
 <style>
 .product-section-head {
 	color: #ff9600;
-  margin-bottom: 16px;
+  /*margin-bottom: 16px;*/
 	font-size: 25px;
 }
 

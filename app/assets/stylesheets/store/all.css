@@ -13,6 +13,9 @@
  *= require store/spree_maker_search
  *= require store/spree_customer_care
  *= require store/jquery.raty.css
+ *= require store/spree_wishlist
+ *= require store/spree_reviews
+ *= require store/spree_products_qa
 */
 
 #logo img {
