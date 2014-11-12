@@ -1,7 +1,7 @@
 <% unless @product_properties2.empty? %>  
   <h6 class="product-section-title"><%= Spree.t('properties')%></h6>
   <table id="product-properties" class="table-display" data-hook>
-    <tbody style="float:right;margin-top: -28%; margin-right: 100px;">
+    <tbody>
       <% @product_properties2.each do |product_property| %>
         <% css_class = cycle('even', 'odd', :name => "properties") %>
         <tr class="<%= css_class %>">

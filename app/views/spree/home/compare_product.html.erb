@@ -2,15 +2,15 @@
   <div class="bx-wrapper slider-pager"></div>
   <div id="content" class="columns sixteen" data-hook="">
     <div id="welcome-message">
-      <div class="container" id="compare_container">
+      <div class="container">
         <%= form_tag find_matched_path, :method => :get, remote: true, :id => "compare_product" do %>
-          <h2 style="float: left; margin-top: -45px;">Compare Products </h2>
+          <h2 class="product-section-head"style="float: left; margin-top: -45px;"><%= Spree.t(:compare_product) %> </h2>
           <div class="alpha six columns">
-            <h3 style="text-align: left;">First Product </h3>
-            <div class="field" style="margin-top:10px;">
+            <h3 style="text-align: left;"><%= Spree.t(:first_product) %></h3>
+            <div class="field hide_me" style="margin-top:10px;">
               <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
-            <div class="field" style="margin-top:20px; float: left;" id="texon_list">
+            <div class="field hide_me" style="margin-top:20px; float: left;" id="texon_list">
               
             </div>
             <div class="field" style="margin-top: 24%;text-align: left;" id="product_list">
@@ -18,23 +18,54 @@
             </div>
           </div>  
           <div class="omega six columns">
-            <h3 style="text-align: left;">Second Product </h3>
-            <div class="field" style="margin-top:10px;">
+            <h3 style="text-align: left;"><%= Spree.t(:second_product) %></h3>
+            <div class="field hide_me" style="margin-top:10px;">
               <%= select_tag 'taxonomy1', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
             </div>
-            <div class="field" style="margin-top:20px; float: left;" id="texon_list_sec">
+            <div class="field hide_me" style="margin-top:20px; float: left;" id="texon_list_sec">
             </div>
             <div class="field" style="margin-top: 24%;text-align: left;" id="product_list1">
               
             </div>
           </div>  
-          <%= submit_tag "Compare", :class => "large primary", :style => "margin-top:10px;" %>
+          <%= submit_tag "Compare", :class => "large primary btn-compare" %>
         <% end %>
       </div>
     </div>
   </div>  
 </div>
+<div id="compare_container" data-hook="" class="container">
+  <% if not @product.blank? && @product1.blank? %>
+    <h6 class="product-section-head">Compare
+      <% @product.each do |product1| %>
+        <%= product1.name %>
+      <% end %> <%= Spree.t(:and) %>  
+      
+      <% @product1.each do |product1|%>
+        <%= product1.name %>
+      <% end %>
+    </h6>
+    <div class="section group" style="margin-top: 5%;">
+      <% @product.each do |product| %>
+        <div class=" col span_1_of_3"style="">
+          <h6 class="product-section-head"><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
+          <%= link_to product_image(product), product %>
+          <div class="price selling "><%= product.display_price %></div>
+          <%= render :partial => 'spree/shared/properties_first' %>
+        </div>    
+      <% end %>
 
+      <% @product1.each do |product| %>
+        <div class=" col span_3_of_3">
+          <h6 class="product-section-head"><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
+          <%= link_to product_image(product), product %>
+          <div class="price selling "><%= product.display_price %></div>
+            <%= render :partial => 'spree/shared/properties_second' %>
+        </div>
+      <% end %>
+    </div>    
+  <% end %> 
+</div>
 <script>
 $( document ).ready(function() {
   $("#taxonomy").on("change", function(){
@@ -156,5 +187,58 @@ $( document ).ready(function() {
 .dropdown_menu:hover .selected {
   color: green;
   background-color: #8dba53;
+}
+
+.product-section-head {
+  color: #ff9600;
+  font-size: 25px;
+}
+
+.first_product {
+  float: left;
+  margin-left: 147px;
+}
+
+.section-left{
+  width: 400px;
+  padding: 25px;
+  margin: 25px;
+}
+.section-right{
+  width: 400px;
+  padding: 25px;
+  float: right;
+  margin-top: -71%;
+}
+
+.section {
+  clear: both;
+  padding: 0px;
+  margin: 0px;
+}
+
+.col {
+  display: block;
+  float:left;
+  width: 35%;
+}
+
+.span_1_of_3 {
+ }
+.span_3_of_3 {
+  margin-left: 20%;
+}
+
+.btn-compare{
+  margin-top: 218px;
+  margin-left: -50%;
+  float: left;
+}
+
+ @media only screen and (max-width: 480px) {
+    .col {
+        width: 100%;
+        margin: 0;
+    }
 }
 </style>                                                            

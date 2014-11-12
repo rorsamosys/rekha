@@ -1,6 +1,6 @@
-<div id="compare_container" data-hook="" class="container">
+<div id="compare_container" data-hook="" class="container" style="margin-top: 3%;">
 	<% if not @product.blank? && @product1.blank? %>
-		<h6 class="product-section-head">Compare
+		<h6 class="product-section-head"><%= Spree.t(:compare) %>
 			<% @product.each do |product1| %>
 			 	<%= product1.name %>
 			<% end %> <%= Spree.t(:and) %>  
@@ -9,20 +9,20 @@
 			 	<%= product1.name %>
 			<% end %>
 		</h6>
-		<div style="margin-top: 10%;">
+		<div class="section group" style="margin-top: 3%;">
 			<% @product.each do |product| %>
-				<div class="first_product"style="">
-					<h6 class="product-section-head"><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
+				<div class=" col span_1_of_3"style="">
 					<%= link_to product_image(product), product %>
+					<h6 class=""><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
 					<div class="price selling "><%= product.display_price %></div>
 			    <%= render :partial => 'spree/shared/properties_first' %>
 				</div>		
 			<% end %>
 
 			<% @product1.each do |product| %>
-				<div class="">
-					<h6 class="product-section-head"><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
+				<div class=" col span_3_of_3">
 				  <%= link_to product_image(product), product %>
+				  <h6 class=""><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
 				  <div class="price selling "><%= product.display_price %></div>
 				    <%= render :partial => 'spree/shared/properties_second' %>
 				</div>
@@ -31,16 +31,3 @@
 	<% end %>	
 </div>
 
-
-<style>
-.product-section-head {
-	color: #ff9600;
-  /*margin-bottom: 16px;*/
-	font-size: 25px;
-}
-
-.first_product {
-	float: left;
-	margin-left: 147px;
-}
-</style>

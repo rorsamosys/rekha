@@ -50,3 +50,4 @@ gem 'spree_customer_care', git: 'https://github.com/netguru/spree_customer_care/
 gem 'spree_wishlist', github: 'spree/spree_wishlist', branch: '2-1-stable'
 gem 'spree_email_to_friend', github: 'spree/spree_email_to_friend', branch: '2-1-stable'
 gem 'spree_reviews', github: 'spree/spree_reviews', branch: '2-1-stable'
+gem 'thin'

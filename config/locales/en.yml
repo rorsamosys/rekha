@@ -39,4 +39,7 @@ en:
     compare: "Compare"
     shop: "Shop"
     order_number: "Order Number"
+    first_product: "First Product"
+    second_product: "Second Product"
+    compare_product: "Compare Product"
 

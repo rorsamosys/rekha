@@ -28,7 +28,6 @@ module Spree
       @taxon2 = Spree::Taxon.where("id = ?", params[:taxon_id2] )
     	@product = Spree::Product.where("id = ?", params[:product_id])
     	@product1 = Spree::Product.where("id = ?", params[:product_sec])
-      #debugger
       @product_properties1 = Spree::ProductProperty.where('product_id = ?', params[:product_id])
       @product_properties2 = Spree::ProductProperty.where('product_id = ?', params[:product_sec]) 
       render :partial =>  'spree/home/matched_products'
