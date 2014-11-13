@@ -3,3 +3,4 @@ Deface::Override.new(:virtual_path => 'spree/products/show',
                      :replace => 'erb[loud]:contains("taxons")',
                      :partial => 'spree/shared/check_avalability')
 
+	

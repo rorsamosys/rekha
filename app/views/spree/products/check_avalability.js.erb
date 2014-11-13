@@ -1,6 +1,6 @@
 <% if  @stock_count > 0 %>
-	$("#available").html("Available with " + <%= @stock_count %> + " Seller ").append("<%= escape_javascript link_to('Change', '') %>");
+	$("#available").html("Available with " + <%= @stock_count %> + " Seller ").append('<input type="button" value="Change" id="change_zip_btn" class="change-zip remote="true" />');
 <% else %>
-	$("#available").html("Not available ").append("<%= escape_javascript link_to(' Change', '') %>");
+	$("#available").html("Not available ").append('<input type="button" value="Change" id="change_zip_btn" class="change-zip" />');
 <% end %>	
 
