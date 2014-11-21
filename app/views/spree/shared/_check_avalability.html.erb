@@ -1,8 +1,105 @@
-<h6 class="product-section-title"><%= Spree.t(:look_for_similar_items) %></h6>
+<% if !@product.relations.blank? %>
+	<h6 class="product-section-title"><%= Spree.t(:look_for_similar_items) %></h6>
+	
+  <%= form_tag compare_product_path, :method => :get, :id => "link_to_compare" do %>
+    <ul id="products" class="inline product-listing" data-hook="">
+    	<% @product.relations.each_with_index do |relation, index| %>
+    	   <% related_product = Spree::Product.find_by_id( relation.related_to_id ) %>
+        <li class="product-row">
+        	<ul>
+        		<li style="margin: 0px 32px 0px 0px;">
+        			<div id="product_<%= related_product.id%>" data="<%= related_product.id%>"class="box">
+        				<%= small_image(related_product)%>
+        			</div>
+        		</li>	
+        	</ul>
+        </li>
+    	<% end %>
+  	</ul>
+    <%= submit_tag "Compare", :class => "large primary", :id=>"" %>
+  <% end %>	
+<% end %>
 
-<% @product.relations.each do |relation| %>
-  <% related_product = Spree::Product.find_by_id( relation.related_to_id ) %>
-    <div class="related-product"> 
-      <%= link_to small_image(related_product), product_path(related_product) %>
-    </div>
-  <% end %>
+
+<script>
+  $(document).ready(function () {
+    var ids = [];
+  	$(".box").on("click",function() {
+  		var product_id = $(this).attr('data');
+  		if ($("#product_" + product_id).hasClass('picked')) {
+        $("#product_" + product_id).removeClass('picked');
+      } else {
+        $("#product_" + product_id).addClass('picked');
+      }
+  	});
+
+
+    $("#link_to_compare").on('submit', function(e){
+      var self = this;
+      e.preventDefault();
+      $('.picked').each(function() {
+        var product_id = $(this).attr('data');
+        ids.push($('#product_' + product_id).attr('data'));
+      });
+      self.submit();
+      $.ajax({
+        type: "get",
+        url:  '/compare_product',
+        data: { product_ids: ids}
+      })
+    }); 
+
+  });
+</script>
+
+
+<style type="text/css">
+div.box {
+  position: relative;
+  border: groove;
+  color: #000;
+  padding: 20px;    
+}
+ 
+div.box:hover {
+  cursor: hand;
+  cursor: pointer;
+  opacity: .9;
+}
+ 
+a.divLink {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  text-decoration: none;
+  /* Makes sure the link doesn't get underlined */
+  z-index: 10;
+  /* raises anchor tag above everything else in div */
+  /*background-color: white;*/
+  /*workaround to make clickable in IE */
+  opacity: 0;
+  /*workaround to make clickable in IE */
+  filter: alpha(opacity=0);
+  /*workaround to make clickable in IE */
+}
+
+
+
+
+.select {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.deselect{
+	position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.picked{ background:gray; }
+
+</style>

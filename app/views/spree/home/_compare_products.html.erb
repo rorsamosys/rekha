@@ -1,0 +1,15 @@
+<div id="compare_container" data-hook="" class="container">
+<% if !@products.blank? %>
+  <% @products.each do |product| %>
+     <div class=" col span_1_of_3"style="">
+        <h6 class="product-section-head"><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
+        <%= link_to product_image(product), product %>
+        <div class="price selling "><%= product.display_price %></div>
+        <%= render :partial => 'spree/shared/product_properties' %>
+      </div> 
+  <% end %>
+<% end %>
+</div>	
+</div>
+
+	

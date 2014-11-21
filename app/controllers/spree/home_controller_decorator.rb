@@ -20,7 +20,12 @@ module Spree
     end
       
     def compare_product
-    	@taxonomies = Spree::Taxonomy.all
+      if !params[:product_ids].blank?
+        @products = Spree::Product.where("id IN(?)", params[:product_ids])
+        @product_properties = Spree::ProductProperty.where('product_id IN(?)', params[:product_ids])
+      else 
+    	  @taxonomies = Spree::Taxonomy.all
+      end
 		end
 
     def find_matched
@@ -29,7 +34,8 @@ module Spree
     	@product = Spree::Product.where("id = ?", params[:product_id])
     	@product1 = Spree::Product.where("id = ?", params[:product_sec])
       @product_properties1 = Spree::ProductProperty.where('product_id = ?', params[:product_id])
-      @product_properties2 = Spree::ProductProperty.where('product_id = ?', params[:product_sec]) 
+      @product_properties2 = Spree::ProductProperty.where('product_id = ?', params[:product_sec])
+      
       render :partial =>  'spree/home/matched_products'
     end
 
