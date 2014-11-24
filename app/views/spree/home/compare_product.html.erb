@@ -32,7 +32,25 @@
             <%= submit_tag "Compare", :class => "large primary btn-compare" %>
           <% end %>
           <% else %>
-            <%= "Hello"%>
+           <span style="float: left; margin-top: -5%;"><h6 class="product-section-head"><%= Spree.t(:compare_product) %></h6></span>
+           <div id="compare_container" data-hook="" class="container"> 
+            <% @main_product.each do |product| %>
+              <div class="product_compare col span_1_of_3"style="">
+                <h6 class="product-section-head"><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
+                <%= link_to product_image(product), product %>
+                <div class="price selling "><%= product.display_price %></div>
+                <%= render :partial => 'spree/shared/product_properties' %>
+              </div>
+            <% end %>
+            <% @products.each_with_index do |product, index| %>
+              <div class="product_compare col span_1_of_3"style="">
+                <h6 class="product-section-head"><%= link_to truncate(product.name, :length => 50), product, :class => 'product-name', :title => product.name %></h6><br>
+                <%= link_to product_image(product), product %>
+                <div class="price selling "><%= product.display_price %></div>
+                <%= render :partial => 'spree/shared/product_properties' %>
+              </div>
+            <% end %>
+          </div>
           <% end %>
       </div>
     </div>

@@ -136,3 +136,7 @@ overflow: hidden;
 .hide{
   display: none;
 }
+
+.product_compare{
+  padding: 20px;
+}

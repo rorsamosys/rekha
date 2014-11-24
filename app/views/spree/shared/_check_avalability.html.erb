@@ -10,6 +10,10 @@
         		<li style="margin: 0px 32px 0px 0px;">
         			<div id="product_<%= related_product.id%>" data="<%= related_product.id%>"class="box">
         				<%= small_image(related_product)%>
+                <h6 class="product-section-head"><%= link_to truncate(related_product.name, :length => 50), related_product, :class => 'product-name', :title => related_product.name %></h6><br>
+                <div style="margin-top: -21px;"class="price selling "><%= related_product.display_price %></div>
+                <%= hidden_field_tag 'product_ids[][p_id]', nil , :id => "id_input_#{related_product.id}" %>
+                <%= hidden_field_tag 'main_product_id', @product.id %>
         			</div>
         		</li>	
         	</ul>
@@ -28,26 +32,12 @@
   		var product_id = $(this).attr('data');
   		if ($("#product_" + product_id).hasClass('picked')) {
         $("#product_" + product_id).removeClass('picked');
+        $("#id_input_"+product_id).val('');
       } else {
         $("#product_" + product_id).addClass('picked');
+        $("#id_input_"+ product_id).val(product_id);
       }
   	});
-
-
-    $("#link_to_compare").on('submit', function(e){
-      var self = this;
-      e.preventDefault();
-      $('.picked').each(function() {
-        var product_id = $(this).attr('data');
-        ids.push($('#product_' + product_id).attr('data'));
-      });
-      self.submit();
-      $.ajax({
-        type: "get",
-        url:  '/compare_product',
-        data: { product_ids: ids}
-      })
-    }); 
 
   });
 </script>
@@ -56,7 +46,7 @@
 <style type="text/css">
 div.box {
   position: relative;
-  border: groove;
+  /*border: groove;*/
   color: #000;
   padding: 20px;    
 }
@@ -100,6 +90,6 @@ a.divLink {
   right: 0;
 }
 
-.picked{ background:gray; }
+.picked{ background:rgb(202, 189, 189); }
 
 </style>

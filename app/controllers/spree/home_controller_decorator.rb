@@ -20,9 +20,16 @@ module Spree
     end
       
     def compare_product
-      if !params[:product_ids].blank?
-        @products = Spree::Product.where("id IN(?)", params[:product_ids])
-        @product_properties = Spree::ProductProperty.where('product_id IN(?)', params[:product_ids])
+      product_ids = []
+       if !params[:product_ids].blank?
+        params[:product_ids].each do |id|
+          product_ids << id[:p_id]
+        end
+        @main_product = Spree::Product.where("id = ?", params[:main_product_id])
+        product_ids= product_ids.reject(&:blank?)
+        @products = Spree::Product.where("id IN(?)", product_ids)
+        @product_properties = Spree::ProductProperty.where('product_id IN(?)', product_ids)
+
       else 
     	  @taxonomies = Spree::Taxonomy.all
       end
@@ -72,7 +79,7 @@ module Spree
       render :partial =>  'spree/home/find_products'
     end
 
-    def listing_product
+    def listing_product 
       products = []
      
       if params["taxon"] and not params["taxon"].blank?
