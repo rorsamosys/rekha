@@ -94,7 +94,7 @@ module Spree
                      JOIN spree_taxons on spree_products_taxons.taxon_id = spree_taxons.id")
                      .where("spree_products_taxons.taxon_id IN(?)", taxon_ids[1]).collect{|p|p.id}
         end
-        @products = Spree::Product.where("id IN(?)", products) unless products.blank?
+        @filtered_products = Spree::Product.where("id IN(?)", products) unless products.blank?
       else
         @products = Spree::Product.all
       end
