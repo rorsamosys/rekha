@@ -1544,7 +1544,7 @@ button, a.button{
 }
 
 button, input[type="submit"]{
-	background-color: #FFFFFF !important;
+	/*background-color: #FFFFFF !important;*/
 }
 /*body {
 font-size: 12px;
