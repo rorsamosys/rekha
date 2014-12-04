@@ -1,66 +1,7 @@
-<nav class="columns sixteen">
-  <ul id="main-nav-bar" style="text-align:left;"class="inline" data-hook>
-    <li id="home-link" data-hook><%= link_to Spree.t(:home), spree.root_path %></li>
-    <li id="compare-link" data-hook><%= link_to Spree.t(:compare), spree.compare_product_path %></li>
-     <li id="contact-link" data-hook><%= link_to Spree.t(:contact_us), spree.contact_us_path %></li>
-     <li id="adout-link" data-hook><%= link_to Spree.t(:about_us), spree.about_us_path %></li>
-     <li id="track-link" style="float: right; margin-right: -162px; margin-top: 30px;"data-hook>
-     	<%= form_tag find_order_path, :method => :get, remote: true do %>
-			  <%= text_field_tag :order_number,nil, :class => 'title', :placeholder =>"Order Number", :style => "height:10px;width: 60%;" %>
-			<%= submit_tag "Find", :class => "small primary", :style => "padding: 1px;" %>
-			<% end %>
-		</li>
-    <li id="link-to-cart" data-hook><%= link_to_cart %></li>
-  </ul>
-</nav>
-
-
-<style>
-
-.container .seven.columns {
-  width: 600px;
-}
-.container .columns {
-  display: inline;
-}
-
-nav #main-nav-bar {
-  margin-top: -40px;
-  text-align: right;
-  border: none;
-  margin-left: -80px;
-}
-
-#locale{
-  position: relative;
-  width: 160px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  background: #fff;
-  border-radius: 3px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  color: #919191;
-  font-size: 13px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
-  border-radius: 8px;
-  border-width: 3px;
-  border-color: #dedede;
-  height: 24px;
-  margin-top: 8px;
-}
-
-
-#locale:hover .selected {
-  color: green;
-  background-color: #8dba53;
-}
-
-label{
-  color: #61a1f0;
-}
-</style>
+<ul id="main-nav-bar" style="text-align:left;"class="inline" data-hook>
+  <li><%= link_to Spree.t(:home), spree.root_path %></li>
+  <li><%= link_to Spree.t(:shop), spree.products_path %></li>
+  <li><%= link_to Spree.t(:compare), spree.compare_product_path %></li>
+  <li><%= link_to Spree.t(:contact_us), spree.contact_us_path %></li>
+  <li><%= link_to Spree.t(:about_us), spree.about_us_path %></li>
+</ul>

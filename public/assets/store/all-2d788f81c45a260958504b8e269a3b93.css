@@ -3446,16 +3446,16 @@ table tbody tr td {
 }
 /* line 11, /home/rekhadhakad/.rvm/gems/ruby-2.1.0@cdn_shop/bundler/gems/spree_fancy-727b66205f48/app/assets/stylesheets/store/components/_slider.scss */
 #subheader .subheader-wrapper {
-  padding: 20px 10px;
-  color: white;
-  overflow: hidden;
+  padding: 20px 10px !important;
+  color: white !important;
+  overflow: hidden !important;
 }
 /* line 16, /home/rekhadhakad/.rvm/gems/ruby-2.1.0@cdn_shop/bundler/gems/spree_fancy-727b66205f48/app/assets/stylesheets/store/components/_slider.scss */
 #subheader .subheader-wrapper h1 {
-  clear: both;
-  color: white;
-  font-size: 34px;
-  font-weight: 300;
+  clear: both !important;
+  color: white !important;
+  font-size: 34px !important;
+  font-weight: 300 !important;
 }
 
 /* line 25, /home/rekhadhakad/.rvm/gems/ruby-2.1.0@cdn_shop/bundler/gems/spree_fancy-727b66205f48/app/assets/stylesheets/store/components/_slider.scss */
@@ -4387,7 +4387,7 @@ ul.radios input[type="radio"] {
   }
   /* line 175, /home/rekhadhakad/.rvm/gems/ruby-2.1.0@cdn_shop/bundler/gems/spree_fancy-727b66205f48/app/assets/stylesheets/store/shared/_media.scss */
   body #subheader .subheader-wrapper h1 {
-    font-size: 28px;
+    font-size: 28px !important;
   }
   /* line 179, /home/rekhadhakad/.rvm/gems/ruby-2.1.0@cdn_shop/bundler/gems/spree_fancy-727b66205f48/app/assets/stylesheets/store/shared/_media.scss */
   body #main-image {
@@ -4550,7 +4550,7 @@ ul.radios input[type="radio"] {
   }
   /* line 331, /home/rekhadhakad/.rvm/gems/ruby-2.1.0@cdn_shop/bundler/gems/spree_fancy-727b66205f48/app/assets/stylesheets/store/shared/_media.scss */
   body #subheader .subheader-wrapper h1[data-hook="checkout_title"] {
-    margin-top: 20px;
+    margin-top: 20px !important;
   }
   /* line 335, /home/rekhadhakad/.rvm/gems/ruby-2.1.0@cdn_shop/bundler/gems/spree_fancy-727b66205f48/app/assets/stylesheets/store/shared/_media.scss */
   body #page_content {
@@ -4616,7 +4616,7 @@ ul.radios input[type="radio"] {
   }
   /* line 395, /home/rekhadhakad/.rvm/gems/ruby-2.1.0@cdn_shop/bundler/gems/spree_fancy-727b66205f48/app/assets/stylesheets/store/shared/_media.scss */
   body #subheader .subheader-wrapper h1 {
-    text-align: left;
+    text-align: left !important;
   }
   /* line 399, /home/rekhadhakad/.rvm/gems/ruby-2.1.0@cdn_shop/bundler/gems/spree_fancy-727b66205f48/app/assets/stylesheets/store/shared/_media.scss */
   body #mobile-navigation:target {

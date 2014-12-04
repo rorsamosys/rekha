@@ -19,5 +19,4 @@
 //= require store/jquery.raty.js
 //= require store/spree_wishlist
 //= require jquery.rating
-//= require store/spree_products_qa
 //= require store/common

@@ -26,7 +26,7 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -43,7 +43,7 @@ gem 'spree_gateway', github: 'spree/spree_gateway', branch: '2-1-stable'
 gem 'spree_static_content', github: 'spree/spree_static_content',branch: '2-1-stable'
 gem 'spree_i18n', github: 'spree/spree_i18n', branch: '2-1-stable'
 gem "highcharts-rails", "~> 3.0.0"
-gem 'spree_products_qa', git: 'https://github.com/netguru/spree_products_qa.git', branch: '2-1-stable'
+#gem 'spree_products_qa', git: 'https://github.com/netguru/spree_products_qa.git', branch: '2-1-stable'
 gem 'spree_product_like', git: 'https://github.com/netguru/spree_product_like.git', branch: '2-1-stable'
 gem 'spree_maker_search', github: 'digitalm/spree_maker_search'
 gem 'spree_customer_care', git: 'https://github.com/netguru/spree_customer_care/', branch: '2-1-stable'
@@ -52,3 +52,5 @@ gem 'spree_email_to_friend', github: 'spree/spree_email_to_friend', branch: '2-1
 gem 'spree_reviews', github: 'spree/spree_reviews', branch: '2-1-stable'
 gem 'thin'
 gem 'spree_related_products', github: 'spree/spree_related_products', branch: '2-1-stable'
+#gem 'spree_bootstrap', github: 'jdutil/spree_bootstrap', branch: '2-1-stable'	
+#gem 'spree_theme', github: 'rekhadhakad/spree_theme', branch: 'master'

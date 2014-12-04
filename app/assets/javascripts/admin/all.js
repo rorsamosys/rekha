@@ -18,4 +18,3 @@
 
 //= require admin/spree_maker_search
 //= require admin/spree_customer_care
-//= require admin/spree_products_qa

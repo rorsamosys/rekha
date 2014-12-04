@@ -11,7 +11,7 @@
               <div class="field hide_me" style="margin-top:10px;">
                 <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
               </div>
-              <div class="field hide_me" style="margin-top:20px; float: left;" id="texon_list">
+              <div class="field hide_me" style="margin-top:30px; float: left;" id="texon_list">
                 
               </div>
               <div class="field" style="margin-top: 24%;text-align: left;" id="product_list">
@@ -23,13 +23,13 @@
               <div class="field hide_me" style="margin-top:10px;">
                 <%= select_tag 'taxonomy1', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
               </div>
-              <div class="field hide_me" style="margin-top:20px; float: left;" id="texon_list_sec">
+              <div class="field hide_me" style="margin-top:30px; float: left;" id="texon_list_sec">
               </div>
               <div class="field" style="margin-top: 24%;text-align: left;" id="product_list1">
                 
               </div>
             </div>  
-            <%= submit_tag "Compare", :class => "large primary btn-compare" %>
+            <%= submit_tag "Compare", :class => "large primary btn-compare", :style=>"background-color: #2ECCFA !important;" %>
           <% end %>
           <% else %>
            <span style="float: left; margin-top: -5%;"><h6 class="product-section-head"><%= Spree.t(:compare_product) %></h6></span>

@@ -15,8 +15,8 @@
  *= require store/jquery.raty.css
  *= require store/spree_wishlist
  *= require store/spree_reviews
- *= require store/spree_products_qa
  * = require store/style.css
+ * = require store/style-sheet.css
 */
 
 #logo img {

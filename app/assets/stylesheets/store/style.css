@@ -1,5 +1,5 @@
 #wrapper h3, #wrapper .search-results-title{
-  border-bottom: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF !important;
   color: #50a2f3;
 }
 
