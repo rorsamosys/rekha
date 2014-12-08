@@ -1301,7 +1301,7 @@ button span{
     height: 63px;
     line-height: 63px;
     padding: 0 20px;
-	background: url("../images/h1_bg.jpg") repeat-x scroll 0 0 transparent;
+	background: url("/assets/h1_bg.jpg") repeat-x scroll 0 0 transparent;
 }
 
 .continue_spn_wp{
@@ -1451,13 +1451,17 @@ background-color: gainsboro;
 	margin-top: 33px !important;
 }
 
-#home-slider ul li button, #home-slider ul li input[type="number"] {
+#home-slider ul li button, #home-slider ul li input[type="submit"] {
 	background-color: white;
-	color: #ff9600;
+	color: #ffffff !important;
 	border-color: #80ae46;
 	font-size: 10px !important;
 	vertical-align: text-bottom;
 	margin-top: 25px
+}
+
+#home-slider ul li button, #home-slider ul li input[type="submit"]:hover {
+	color: #ffffff !important;
 }
 
 
@@ -1466,6 +1470,9 @@ background-color: gainsboro;
 	color: #ff9600;
 	font-size: 16px;
 	vertical-align: text-bottom;
+	width: 60px !important;
+	padding: 3px;
+	padding-left: 11px;
 }
 
 button {
@@ -1495,7 +1502,7 @@ button, input {
 }
 
 input[type="submit"],button {
-	background-color: #2ECCFA;
+	background-color: #4ab5e3;
 	background-image: none;
 	text-shadow: none;
 	color: white;
@@ -1539,6 +1546,22 @@ nav #taxonomies .taxonomy-root, #sidebar_products_search .filter-title, .product
 }
 
 button, a.button{
-	background-color: #2ECCFA !important;
+	background-color: #4ab5e3 !important;
 	border-width: 0px !important;
 }
+
+.order-btn{
+	padding-top: 1px !important;
+	padding-left: 8px !important;
+	width: 44px !important;
+	margin-top: -26px !important;
+	margin-left: 116px !important;
+}
+
+/*body {
+font-size: 12px;
+font-family: Arial, Helvetica, sans-serif;
+line-height: 18px;
+background: url(/assets/page-bg.jpg) repeat-x #ffffff;
+color: #333333;
+}*/

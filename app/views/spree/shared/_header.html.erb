@@ -6,23 +6,22 @@
     <div class="right_links_wp">
   		<div class="top_nav_wp">
         
-        <a href="#">Find a store</a> | 
+        
         <% if spree_user_signed_in? %>
         <a href="<%= account_path%>">My Account</a> | 
         <a href="<%= cart_path%>">My Cart</a> | 
-          <div class="Search_wp">
-        <div class="Search_input_wp">
-          <%= form_tag find_order_path, :method => :get, remote: true do %>
-            <%= text_field_tag :order_number,nil, :class => 'title', :placeholder =>"Order Number", :style=>"background-color: #F2F2F2;" %>
-    
-        </div><!--search_input_wp-->
-        <%= submit_tag "Find", :class => "Search_btn", :style=>"padding-top: 5px;padding-left: 8px; width: 44px;" %>
-    <% end %>
-      </div><!--Search_wp--> 
-          <a href="<%= destroy_spree_user_session_path %>" class="Left_padding_none">Logout</a> 
+        <a href="<%= destroy_spree_user_session_path %>" class="Left_padding_none">Logout</a> 
         <% else %>
           <a href="<%= create_new_session_path %>" class="Left_padding_none">Login</a> 
         <% end %> 
+        <div class="Search_wp" style="position:absolute; margin-left: 16%;"> 
+          <div class="Search_input_wp">
+            <%= form_tag find_order_path, :method => :get, remote: true do %>
+              <%= text_field_tag :order_number,nil, :class => 'title', :placeholder =>"Order Number", :style=>"background-color: #F2F2F2;" %>
+              <%= submit_tag "Find", :class => "Search_btn order-btn"%>
+            <% end %>
+          </div><!--search_input_wp-->
+        </div><!--Search_wp--> 
       </div><!--top_nav_wp-->
         <span class="clear"></span>
     </div><!--right_links_wp-->
