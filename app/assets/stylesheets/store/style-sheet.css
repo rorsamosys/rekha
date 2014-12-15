@@ -1558,6 +1558,10 @@ button, a.button{
 	margin-left: 116px !important;
 }
 
+form p, form .field {
+ padding: 25px !important; 
+}
+
 /*body {
 font-size: 12px;
 font-family: Arial, Helvetica, sans-serif;
@@ -1565,3 +1569,8 @@ line-height: 18px;
 background: url(/assets/page-bg.jpg) repeat-x #ffffff;
 color: #333333;
 }*/
+
+input[type="text"]{
+  /*margin-left: -253px!important;
+  margin-top: 5px!important;*/
+}

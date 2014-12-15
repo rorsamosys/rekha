@@ -1,6 +1,6 @@
 <% if @order.nil? %>
   $("#wrapper").html('No Result Found');
 <% else %>
-  $('#wrapper').html("<%= j render partial: 'spree/track_order/order_result', locals: {order: @order } %>");
+  $('#wrapper').html("<%= j render partial: 'spree/track_order/order_result', locals: {ship_state: @ship_state, order: @order, payment: @payment } %>");
 <%end%>
 	

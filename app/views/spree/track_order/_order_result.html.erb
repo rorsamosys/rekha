@@ -1,34 +1,20 @@
-<div class="sixteen columns">
-  <table class="index responsive" id="listing_orders" data-hook="">
-    <thead>
-    	<tr>
-    		<th><%= Spree.t(:th_number) %></th>
-    		<th><%= Spree.t(:th_address) %></th>
-        <th><%= Spree.t(:th_order_state) %></th>
-      </tr>
-    </thead>
-    <tbody>
-    	<td><%= order.number %></td>
-    	<td><%= order.bill_address %></td>
-			<td>
-				<% if order.state == "payment" %>
-					<%= Spree.t(:os_payment) %>
-				<% elsif  order.state == "cart"%>
-					<%= Spree.t(:os_cart) %>
-				<% elsif  order.state == "address"%>
-					<%= Spree.t(:os_address) %>
-				<% elsif  order.state == "delivery"%>
-					<%= Spree.t(:os_delivery) %>
-				<% elsif  order.state == "complete"%>
-					<%= Spree.t(:os_completed) %>
-				<% elsif  order.state == "confirm"%>
-					<%= Spree.t(:os_confirmed) %>
-				<% elsif  order.state == "cancled"%>
-					<%= Spree.t(:os_canseled) %>
-				<% elsif  order.state == "returned"%>
-					<%= Spree.t(:os_returned) %>
-				<% end %></td>
-    </tbody>
-  </table>
-</div>    
+<p>Your <%= order.number %> is
+	<% if ship_state.state == "shipped" %>
+		<%= Spree.t(:dispatched_state) %> From
+		<%= ship_state.stock_location.name %> <%= ship_state.stock_location.address1 %> On <%= ship_state.shipped_at %>
+	<% end %>
+	<% if ship_state.state == "pending" %>
+	  <% if payment.state == "processing" %>
+	  	<%= Spree.t(:payment_process) %>
+	  <% elsif payment.state == "pending" %>
+	  	<%= Spree.t(:payment_pending) %>
+	  <% end %>
+		<%= Spree.t(:pending_state) %> At 
+		<%= ship_state.stock_location.name %> <%= ship_state.stock_location.address1 %>
+	<% end %>
+	<% if ship_state.state == "ready" %>
+		<%= Spree.t(:ready_state) %> At
+		<%= ship_state.stock_location.name %> <%= ship_state.stock_location.address1 %>
+	<% end %>
+</p>
 
