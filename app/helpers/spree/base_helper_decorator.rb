@@ -7,20 +7,12 @@ module Spree
           css_class = (current_taxon && current_taxon.self_and_ancestors.include?(taxon)) ? 'current' : nil
           
           content_tag :div, class: css_class do
-            ids = []
-            taxonomy = Spree::Taxonomy.find_by_id(taxon[:taxonomy_id])
-            if !params[:taxon].blank?
-              ids << params[:taxon].collect { |k, v| v }.flatten
-            end 
-            ids = ids.flatten
-            if ids.include?(taxon.id.to_s)
-              check_box_tag("taxon[#{taxonomy.name}][]", taxon.id, :checked => "checked" )  +
+             taxonomy = Spree::Taxonomy.find_by_id(taxon[:taxonomy_id])
+            check_box_tag("taxon[]", taxon.id )  +
+            label(:taxon, "    #{taxon.name}")  
+              check_box_tag("taxon[#{taxonomy.name}][]", taxon.id, nil, :class => "submittable" )  +
             label(:taxon, "    #{taxon.name}") 
-          else
-            check_box_tag("taxon[#{taxonomy.name}][]", taxon.id )  +
-            label(:taxon, "    #{taxon.name}")
-          end
-          end
+         end
         end.join("\n").html_safe
       end
     end

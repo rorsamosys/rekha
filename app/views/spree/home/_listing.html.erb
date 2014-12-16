@@ -13,7 +13,7 @@
 <% end %>
 
 
-<div data-hook="search_results">
+<div  id="filtered_product" data-hook="search_results">
   <% if @filtered_products.blank? %>
     <h6 class="search-results-title"><%= Spree.t(:no_products_found) %></h6>
   <% else %>

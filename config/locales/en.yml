@@ -50,5 +50,5 @@ en:
     dispatched_state: "Dispatched"
     pending_state: "Pending for shipment"
     ready_state: "Ready For shipment"
-    payment_process: "Your payment is in process"
-    payment_pending: "Your payment is due for this order"
+    payment_process: "Payment is in process"
+    payment_pending: "Payment is due for this order"
