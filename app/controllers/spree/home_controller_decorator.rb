@@ -80,32 +80,34 @@ module Spree
     end
 
     def listing_product 
-      products = [] 
-
-    #params[:taxon_ids].each_with_index do |taxon_id, index|
+      products = []
       @products = Spree::Product.joins("JOIN spree_products_taxons on spree_products_taxons.product_id = spree_products.id
                       JOIN spree_taxons on spree_products_taxons.taxon_id = spree_taxons.id")
               .where("spree_products_taxons.taxon_id IN(?)", params[:taxon_ids])
-      # if index == 0
-        products = @products.collect{|p|p.id}
-      # end
+
+      products = @products.collect{|p|p.id}
+     
+      arr1 = params[:first]
+      arr2 = params[:second]
+      conditions = []
+      unless arr1.blank?
+        arr1.each_with_index do |price, index|
+          if arr2[index].to_i != 0
+            conditions << "(spree_prices.amount BETWEEN #{price.to_i} AND #{arr2[index].to_i} AND spree_prices.currency = 'USD')"
+          else
+            conditions << "(spree_prices.amount > #{price.to_i} AND spree_prices.currency = 'USD')"
+          end
+        end
+      end
+      if conditions.blank?
+        @filtered_products = Spree::Product.where("id IN(?)", products) unless products.blank?
+      else
+        @filtered_products = Spree::Product.where("spree_products.id IN(?) AND #{conditions.join(' OR ')}", products)
+        .joins("INNER JOIN spree_variants ON spree_variants.product_id = spree_products.id
+                INNER JOIN spree_prices ON spree_prices.variant_id = spree_variants.id
+          ") unless products.blank?
+      end
       
-      # products = products & Spree::Product.joins("JOIN spree_products_taxons on spree_products_taxons.product_id = spree_products.id
-      #                 JOIN spree_taxons on spree_products_taxons.taxon_id = spree_taxons.id")
-      #         .where("spree_products_taxons.taxon_id IN(?)", taxon_id).collect{|p|p.id}
-        
-       
-    #end
-    @filtered_products = Spree::Product.where("id IN(?)", products) unless products.blank?
-
-
-
-      # product_sec = Spree::Product.joins("JOIN spree_products_taxons on spree_products_taxons.product_id = spree_products.id
-      #                     JOIN spree_taxons on spree_products_taxons.taxon_id = spree_taxons.id")
-      #             .where("spree_products_taxons.taxon_id IN(?)", params[:taxon_ids])
-          
-      # products = product_sec.collect{|p|p.id}
-      # @filtered_products = Spree::Product.where("id IN(?)", products) unless products.blank?
     end
   end
 end

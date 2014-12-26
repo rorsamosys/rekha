@@ -18,3 +18,6 @@ Spree.user_class = "Spree::User"
 
 SpreeI18n::Config.available_locales = [:en,:ru, :'pt-BR'] # displayed on translation forms
 SpreeI18n::Config.supported_locales = [:en,:ru, :'pt-BR'] # displayed on frontend select box
+Spree::SocialConfig[:path_prefix] = 'member' # for /member/auth/:provider
+Spree::SocialConfig[:path_prefix] = 'profile' # for /profile/auth/:provider
+Spree::SocialConfig[:path_prefix] = '' # for /auth/:provider

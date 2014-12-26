@@ -53,5 +53,4 @@ gem 'spree_email_to_friend', github: 'spree/spree_email_to_friend', branch: '2-1
 gem 'spree_reviews', github: 'spree/spree_reviews', branch: '2-1-stable'
 gem 'thin'
 gem 'spree_related_products', github: 'spree/spree_related_products', branch: '2-1-stable'
-#gem 'spree_bootstrap', github: 'jdutil/spree_bootstrap', branch: '2-1-stable'	
-#gem 'spree_theme', github: 'rekhadhakad/spree_theme', branch: 'master'
+gem 'spree_social', github: 'spree-contrib/spree_social', branch: '2-1-stable'

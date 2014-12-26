@@ -1,14 +1,14 @@
 <% content_for :sidebar do %>
   <div data-hook="homepage_sidebar_navigation">
-    <%= form_tag listing_product_path, :method => :get, :id => 'sidebar_products_search' do %>
+    <%#= form_tag listing_product_path, :method => :get, :id => 'sidebar_products_search' do %>
     
     <% if "spree/products" == params[:controller] && @taxon %>
       <%= render :partial => 'spree/shared/filters' %>
     <% else %>
       <%= render :partial => 'spree/shared/taxonomies' %>
     <% end %>
-    <%= submit_tag Spree.t(:search), :name => nil %>
-    <% end %>
+    <%#= submit_tag Spree.t(:search), :name => nil %>
+    <%# end %>
   </div>
 <% end %>
 

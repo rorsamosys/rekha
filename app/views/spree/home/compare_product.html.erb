@@ -8,24 +8,24 @@
             <h2 class="product-section-head"style="float: left; margin-top: -45px;"><%= Spree.t(:compare_product) %> </h2>
             <div class="alpha six columns">
               <h3 style="text-align: left;"><%= Spree.t(:first_product) %></h3>
-              <div class="field hide_me" style="margin-top:10px;">
+              <div class="field hide_me" style="margin-top:-10px;  margin-left: -30px;">
                 <%= select_tag 'taxonomy', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
               </div>
-              <div class="field hide_me" style="margin-top:30px; float: left;" id="texon_list">
+              <div class="field hide_me" style="margin-top:-30px; float: left; margin-left: -55px;" id="texon_list">
                 
               </div>
-              <div class="field" style="margin-top: 24%;text-align: left;" id="product_list">
+              <div class="field" style="margin-top: 10%; text-align: left; margin-left: -55px;" id="product_list">
                
               </div>
             </div>  
             <div class="omega six columns">
               <h3 style="text-align: left;"><%= Spree.t(:second_product) %></h3>
-              <div class="field hide_me" style="margin-top:10px;">
+              <div class="field hide_me" style="margin-top:-10px; margin-left: -30px;">
                 <%= select_tag 'taxonomy1', options_for_select(@taxonomies.collect{ |c| [c.name, c.id] }),  :class => '',:prompt => "Select Category" %>
               </div>
-              <div class="field hide_me" style="margin-top:30px; float: left;" id="texon_list_sec">
+              <div class="field hide_me" style="margin-top:-30px; float: left; margin-left: -55px;" id="texon_list_sec">
               </div>
-              <div class="field" style="margin-top: 24%;text-align: left;" id="product_list1">
+              <div class="field" style="margin-top: 10%; text-align: left; margin-left: -55px;" id="product_list1">
                 
               </div>
             </div>  

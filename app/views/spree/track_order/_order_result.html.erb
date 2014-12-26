@@ -1,4 +1,5 @@
-<p>Your <%= order.number %> is
+<p>Order Number : <%= order.number %> <br>
+	Status:
 	<% if ship_state.state == "shipped" %>
 		<%= Spree.t(:dispatched_state) %> From
 		<%= ship_state.stock_location.name %> <%= ship_state.stock_location.address1 %> On <%= ship_state.shipped_at %>
@@ -10,7 +11,7 @@
 	  	<%= Spree.t(:payment_pending) %>
 	  <% end %>
 		<%= Spree.t(:pending_state) %> At 
-		<%= ship_state.stock_location.name %> <%= ship_state.stock_location.address1 %>
+		<%= ship_state.stock_location.name %> <%#= ship_state.stock_location.address1 %>
 	<% end %>
 	<% if ship_state.state == "ready" %>
 		<%= Spree.t(:ready_state) %> At
