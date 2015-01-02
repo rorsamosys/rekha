@@ -100,12 +100,21 @@ module Spree
         end
       end
       if conditions.blank?
-        @filtered_products = Spree::Product.where("id IN(?)", products) unless products.blank?
+        if not products.blank?
+          @filtered_products = Spree::Product.where("id IN(?)", products)
+        else
+          @filtered_products = Spree::Product.all
+        end
       else
-        @filtered_products = Spree::Product.where("spree_products.id IN(?) AND #{conditions.join(' OR ')}", products)
-        .joins("INNER JOIN spree_variants ON spree_variants.product_id = spree_products.id
-                INNER JOIN spree_prices ON spree_prices.variant_id = spree_variants.id
-          ") unless products.blank?
+        if not products.blank?
+          @filtered_products = Spree::Product.where("spree_products.id IN(?) AND #{conditions.join(' OR ')}", products)
+          .joins("INNER JOIN spree_variants ON spree_variants.product_id = spree_products.id
+                  INNER JOIN spree_prices ON spree_prices.variant_id = spree_variants.id").distinct
+        else
+          @filtered_products = Spree::Product.where("#{conditions.join(' OR ')}")
+          .joins("INNER JOIN spree_variants ON spree_variants.product_id = spree_products.id
+                  INNER JOIN spree_prices ON spree_prices.variant_id = spree_variants.id").distinct
+        end
       end
       
     end
