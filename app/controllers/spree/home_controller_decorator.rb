@@ -93,9 +93,9 @@ module Spree
       unless arr1.blank?
         arr1.each_with_index do |price, index|
           if arr2[index].to_i != 0
-            conditions << "(spree_prices.amount BETWEEN #{price.to_i} AND #{arr2[index].to_i} AND spree_prices.currency = 'USD')"
+            conditions << "(spree_prices.amount BETWEEN #{price.to_i} AND #{arr2[index].to_i} )"
           else
-            conditions << "(spree_prices.amount > #{price.to_i} AND spree_prices.currency = 'USD')"
+            conditions << "(spree_prices.amount > #{price.to_i} )"
           end
         end
       end
@@ -107,11 +107,11 @@ module Spree
         end
       else
         if not products.blank?
-          @filtered_products = Spree::Product.where("spree_products.id IN(?) AND #{conditions.join(' OR ')}", products)
+          @filtered_products = Spree::Product.where("spree_products.id IN(?) AND (#{conditions.join(' OR ')}) AND spree_prices.currency = 'USD'", products)
           .joins("INNER JOIN spree_variants ON spree_variants.product_id = spree_products.id
                   INNER JOIN spree_prices ON spree_prices.variant_id = spree_variants.id").distinct
         else
-          @filtered_products = Spree::Product.where("#{conditions.join(' OR ')}")
+          @filtered_products = Spree::Product.where("(#{conditions.join(' OR ')}) AND spree_prices.currency = 'USD'")
           .joins("INNER JOIN spree_variants ON spree_variants.product_id = spree_products.id
                   INNER JOIN spree_prices ON spree_prices.variant_id = spree_variants.id").distinct
         end

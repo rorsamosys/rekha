@@ -18,7 +18,7 @@
           <div class="Search_input_wp">
             <%= form_tag find_order_path, :method => :get, remote: true do %>
              <!-- <lable>Track your order </lable> -->
-             <%= text_field_tag :order_number,nil, :class => 'title', :placeholder =>"Track Your Order", :style=>"background-color: #F2F2F2;" %>
+             <%= text_field_tag :order_number,nil, :class => 'title', :placeholder =>"Track Order", :style=>"background-color: #F2F2F2;" %>
               <%= submit_tag "Find", :class => "Search_btn order-btn"%>
             <% end %>
           </div><!--search_input_wp-->

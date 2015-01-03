@@ -141,3 +141,13 @@ overflow: hidden;
   padding: 20px;
 }
 
+.form-buttons{
+  margin-top: 30px !important;
+  float: left !important;
+  margin-left: 36px !important;
+}
+
+
+ul#products li a.info {
+ overflow: inherit !important; 
+}

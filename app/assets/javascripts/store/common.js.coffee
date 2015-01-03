@@ -4,7 +4,8 @@ addSelectedTaxon  = (first ,second , taxon_ids) ->
 	$.ajax
 		type: "GET",
 		data: myData,
-		url: url,							
+		url: url,
+									
 
 $(document).ready ->
 	$("#sidebar").on "click", ".submittable", ->

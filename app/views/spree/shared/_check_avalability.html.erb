@@ -39,6 +39,16 @@
       }
   	});
 
+    $("#link_to_compare").submit(function() {
+      var product_id = $(".box").attr('data');
+      if ($("#product_" + product_id).hasClass('picked')) {
+        return true
+      } else {
+        alert("Please select product for compare")
+        return false
+      }
+    });
+
   });
 </script>
 
