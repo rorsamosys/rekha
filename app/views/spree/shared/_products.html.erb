@@ -14,7 +14,9 @@
 <% elsif params.key?(:keywords) %>
   <h6 class="search-results-title"><%= Spree.t(:search_results, :keywords => h(params[:keywords])) %></h6>
 <% end %>
-
+<div id="loader" class="block_left" style="">
+  <img src="/assets/loading.gif" style="position:fixed; left:50%; top:50%;" >
+</div>
 <% if products.any? %>
 <ul id="products" class="inline product-listing" data-hook>
   <% products.each do |product| %>

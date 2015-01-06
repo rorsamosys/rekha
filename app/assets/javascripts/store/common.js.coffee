@@ -1,11 +1,15 @@
 addSelectedTaxon  = (first ,second , taxon_ids) -> 
 	url = "/listing_product"
+	$("#loader").show()
+	$('body').addClass 'ui-loader-background'
+	$("#subheader").remove()
 	myData =  {first : first, second : second, taxon_ids : taxon_ids }
 	$.ajax
 		type: "GET",
 		data: myData,
 		url: url,
-									
+		success: (	) ->
+			$('body').removeClass 'ui-loader-background'
 
 $(document).ready ->
 	$("#sidebar").on "click", ".submittable", ->

@@ -32,6 +32,7 @@
             <%= submit_tag "Compare", :class => "large primary btn-compare", :style=>"background-color: #4ab5e3 !important;" %>
           <% end %>
           <% else %>
+          <%= link_to_function "Back", "history.back()", :class => "back-url" %>
            <span style="float: left; margin-top: -5%;"><h6 class="product-section-head"><%= Spree.t(:compare_product) %></h6></span>
            <div id="compare_container" data-hook="" class="container"> 
             <% @main_product.each do |product| %>
@@ -149,12 +150,12 @@ $( document ).ready(function() {
         product_sec = $("#product_sec").val(),
         url = "/find_matched";
     if(product_id == "" || product_sec == ""){
-      alert("Please Selctt Product")
+      alert("Please Select Product")
       return false;
     }
 
     if(taxon_id =="" || taxon_id2 == ""){
-      alert("Please Selctt Brand")
+      alert("Please Select Brand")
       return false;
     }    
     $.ajax({
